@@ -1,0 +1,169 @@
+name: feedback-ai
+
+x-app-environment: &app-environment
+  DATABASE_URL: postgresql://feedback_app:${APP_DB_PASSWORD:?Run scripts/setup_env.py first}@postgres:5432/feedback
+  INTERNAL_API_KEY: ${INTERNAL_API_KEY:?Run scripts/setup_env.py first}
+  KAFKA_BOOTSTRAP_SERVERS: kafka:9092
+  KAFKA_TOPIC: feedback.v1
+  KAFKA_DLQ_TOPIC: feedback.dlq.v1
+  KAFKA_GROUP_ID: feedback-workers
+  INFERENCE_URL: http://inference:8000
+  MODEL_VERSION: ${MODEL_VERSION:-v1}
+
+x-app: &app
+  image: feedback-ai:${IMAGE_TAG:-local}
+  build:
+    context: .
+    dockerfile: infrastructure/docker/Dockerfile
+  restart: unless-stopped
+  init: true
+  security_opt: [no-new-privileges:true]
+  cap_drop: [ALL]
+  environment: *app-environment
+  healthcheck:
+    test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://localhost:8000/health/ready', timeout=3)"]
+    interval: 10s
+    timeout: 5s
+    start_period: 30s
+    retries: 12
+
+services:
+  postgres:
+    image: pgvector/pgvector:0.8.0-pg17
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: feedback
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Run scripts/setup_env.py first}
+    ports: ["127.0.0.1:5432:5432"]
+    volumes: [postgres-data:/var/lib/postgresql/data]
+    healthcheck:
+      test: [CMD-SHELL, "pg_isready -U postgres -d feedback"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  kafka:
+    image: apache/kafka:3.9.1
+    restart: unless-stopped
+    environment:
+      CLUSTER_ID: MkU3OEVBNTcwNTJENDM2Qk
+      KAFKA_NODE_ID: 1
+      KAFKA_PROCESS_ROLES: broker,controller
+      KAFKA_LISTENERS: PLAINTEXT://:9092,CONTROLLER://:9093
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
+      KAFKA_CONTROLLER_QUORUM_VOTERS: 1@kafka:9093
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_DEFAULT_REPLICATION_FACTOR: 1
+      KAFKA_MIN_INSYNC_REPLICAS: 1
+      KAFKA_NUM_PARTITIONS: 6
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "false"
+      KAFKA_LOG_DIRS: /var/lib/kafka/data
+      KAFKA_HEAP_OPTS: -Xms256m -Xmx512m
+    volumes: [kafka-data:/var/lib/kafka/data]
+    healthcheck:
+      test: [CMD-SHELL, "/opt/kafka/bin/kafka-broker-api-versions.sh --bootstrap-server localhost:9092 >/dev/null 2>&1"]
+      interval: 10s
+      timeout: 10s
+      start_period: 30s
+      retries: 20
+
+  kafka-init:
+    image: apache/kafka:3.9.1
+    restart: "no"
+    depends_on:
+      kafka: {condition: service_healthy}
+    entrypoint: [/bin/sh, -ec]
+    command:
+      - |
+        /opt/kafka/bin/kafka-topics.sh --bootstrap-server kafka:9092 --create --if-not-exists --topic feedback.v1 --partitions 6 --replication-factor 1 --config retention.ms=604800000
+        /opt/kafka/bin/kafka-topics.sh --bootstrap-server kafka:9092 --create --if-not-exists --topic feedback.dlq.v1 --partitions 6 --replication-factor 1 --config retention.ms=2592000000
+
+  migrate:
+    <<: *app
+    restart: "no"
+    command: [python, -m, feedback_platform.bootstrap]
+    healthcheck: {disable: true}
+    environment:
+      <<: *app-environment
+      ADMIN_DATABASE_URL: postgresql://postgres:${POSTGRES_PASSWORD}@postgres:5432/feedback
+      APP_DB_PASSWORD: ${APP_DB_PASSWORD}
+      DEMO_TENANT_A_KEY: ${DEMO_TENANT_A_KEY:?Run scripts/setup_env.py first}
+      DEMO_TENANT_B_KEY: ${DEMO_TENANT_B_KEY:?Run scripts/setup_env.py first}
+    depends_on:
+      postgres: {condition: service_healthy}
+
+  ingestion:
+    <<: *app
+    command: [uvicorn, feedback_platform.ingestion:app, --host, 0.0.0.0, --port, "8000"]
+    ports: ["127.0.0.1:8000:8000"]
+    depends_on:
+      migrate: {condition: service_completed_successfully}
+
+  inference:
+    <<: *app
+    command: [uvicorn, feedback_platform.inference:app, --host, 0.0.0.0, --port, "8000"]
+
+  outbox:
+    <<: *app
+    command: [python, -m, feedback_platform.outbox]
+    depends_on:
+      migrate: {condition: service_completed_successfully}
+      kafka-init: {condition: service_completed_successfully}
+
+  worker:
+    <<: *app
+    command: [python, -m, feedback_platform.worker]
+    stop_grace_period: 45s
+    depends_on:
+      migrate: {condition: service_completed_successfully}
+      kafka-init: {condition: service_completed_successfully}
+      inference: {condition: service_healthy}
+
+  rag:
+    <<: *app
+    command: [uvicorn, feedback_platform.rag:app, --host, 0.0.0.0, --port, "8000"]
+    ports: ["127.0.0.1:8002:8000"]
+    environment:
+      <<: *app-environment
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      OPENAI_MODEL: ${OPENAI_MODEL:-}
+    depends_on:
+      migrate: {condition: service_completed_successfully}
+      inference: {condition: service_healthy}
+
+  prometheus:
+    image: prom/prometheus:v3.2.1
+    restart: unless-stopped
+    command: [--config.file=/etc/prometheus/prometheus.yml, --storage.tsdb.retention.time=7d]
+    ports: ["127.0.0.1:9090:9090"]
+    volumes:
+      - ./monitoring/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - ./monitoring/prometheus/alerts.yml:/etc/prometheus/alerts.yml:ro
+      - prometheus-data:/prometheus
+
+  grafana:
+    image: grafana/grafana:11.6.0
+    restart: unless-stopped
+    environment:
+      GF_SECURITY_ADMIN_USER: admin
+      GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_PASSWORD:?Run scripts/setup_env.py first}
+      GF_USERS_ALLOW_SIGN_UP: "false"
+      GF_AUTH_ANONYMOUS_ENABLED: "false"
+    ports: ["127.0.0.1:3000:3000"]
+    volumes:
+      - ./monitoring/grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./monitoring/grafana/dashboards:/var/lib/grafana/dashboards:ro
+      - grafana-data:/var/lib/grafana
+    depends_on: [prometheus]
+
+volumes:
+  postgres-data:
+  kafka-data:
+  prometheus-data:
+  grafana-data:

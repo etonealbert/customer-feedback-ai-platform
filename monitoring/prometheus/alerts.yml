@@ -1,0 +1,32 @@
+groups:
+  - name: feedback-platform
+    rules:
+      - alert: FeedbackServiceDown
+        expr: up{job="feedback-services"} == 0
+        for: 1m
+        labels: {severity: warning}
+        annotations:
+          summary: "{{ $labels.service }} metrics are unreachable"
+      - alert: FeedbackAPIErrorRate
+        expr: sum(rate(feedback_http_requests_total{status=~"5.."}[5m])) / clamp_min(sum(rate(feedback_http_requests_total[5m])), 0.001) > 0.05
+        for: 2m
+        labels: {severity: warning}
+        annotations:
+          summary: HTTP 5xx rate exceeds five percent
+      - alert: FeedbackOutboxBacklog
+        expr: max(feedback_outbox_pending) > 100
+        for: 2m
+        labels: {severity: warning}
+        annotations:
+          summary: Feedback is waiting for Kafka delivery
+      - alert: FeedbackConsumerLag
+        expr: sum(feedback_consumer_lag) > 1000
+        for: 2m
+        labels: {severity: warning}
+        annotations:
+          summary: Workers are falling behind Kafka
+      - alert: FeedbackDeadLetter
+        expr: sum(increase(feedback_worker_results_total{outcome="dead_letter"}[5m])) > 0
+        labels: {severity: warning}
+        annotations:
+          summary: Feedback requires dead-letter inspection

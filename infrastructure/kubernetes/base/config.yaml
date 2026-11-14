@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: feedback-config
+data:
+  KAFKA_BOOTSTRAP_SERVERS: kafka:9092
+  KAFKA_TOPIC: feedback.v1
+  KAFKA_DLQ_TOPIC: feedback.dlq.v1
+  KAFKA_GROUP_ID: feedback-workers
+  INFERENCE_URL: http://inference:8000
+  MODEL_VERSION: v1
+  OMP_NUM_THREADS: "1"
+  OPENBLAS_NUM_THREADS: "1"
+  MKL_NUM_THREADS: "1"

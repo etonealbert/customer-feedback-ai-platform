@@ -1,0 +1,34 @@
+# Requires metrics-server. CPU scaling is a demo; use Kafka lag with KEDA for event-driven production scaling.
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: worker
+  namespace: feedback-ai
+spec:
+  scaleTargetRef: {apiVersion: apps/v1, kind: Deployment, name: worker}
+  minReplicas: 1
+  maxReplicas: 6
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target: {type: Utilization, averageUtilization: 70}
+  behavior:
+    scaleDown: {stabilizationWindowSeconds: 120}
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: inference
+  namespace: feedback-ai
+spec:
+  scaleTargetRef: {apiVersion: apps/v1, kind: Deployment, name: inference}
+  minReplicas: 1
+  maxReplicas: 4
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target: {type: Utilization, averageUtilization: 70}
+  behavior:
+    scaleDown: {stabilizationWindowSeconds: 120}

@@ -1,0 +1,37 @@
+[build-system]
+requires = ["hatchling>=1.26"]
+build-backend = "hatchling.build"
+
+[project]
+name = "customer-feedback-ai-platform"
+version = "0.1.0"
+description = "A small, observable multi-tenant feedback processing platform"
+requires-python = ">=3.12,<3.14"
+dependencies = [
+  "fastapi>=0.115,<1", "uvicorn[standard]>=0.34,<1",
+  "pydantic-settings>=2.7,<3", "psycopg[binary,pool]>=3.2,<4",
+  "aiokafka>=0.12,<1", "httpx>=0.28,<1", "numpy>=2.2,<3",
+  "scikit-learn>=1.6,<2", "prometheus-client>=0.21,<1",
+  "python-dotenv>=1.0,<2"
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.3,<10", "pytest-asyncio>=0.25,<2", "ruff>=0.11,<1", "psutil>=6,<8", "pyyaml>=6,<7"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/feedback_platform"]
+
+[tool.hatch.build.targets.wheel.force-include]
+"models" = "models"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+markers = ["integration: requires the running Docker Compose stack"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I"]

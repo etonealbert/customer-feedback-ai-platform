@@ -1,0 +1,14 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: feedback-ai
+resources:
+  - namespace.yaml
+  - config.yaml
+  - postgres.yaml
+  - kafka.yaml
+  - jobs.yaml
+  - applications.yaml
+images:
+  - name: feedback-ai
+    newName: feedback-ai
+    newTag: local
