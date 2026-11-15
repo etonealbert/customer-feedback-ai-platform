@@ -35,7 +35,7 @@ services:
       POSTGRES_DB: feedback
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Run scripts/setup_env.py first}
-    ports: ["127.0.0.1:5432:5432"]
+    ports: ["127.0.0.1:${POSTGRES_PORT:-55432}:5432"]
     volumes: [postgres-data:/var/lib/postgresql/data]
     healthcheck:
       test: [CMD-SHELL, "pg_isready -U postgres -d feedback"]
@@ -133,6 +133,7 @@ services:
       <<: *app-environment
       OPENAI_API_KEY: ${OPENAI_API_KEY:-}
       OPENAI_MODEL: ${OPENAI_MODEL:-}
+      LLM_PROVIDER: ${LLM_PROVIDER:-local}
     depends_on:
       migrate: {condition: service_completed_successfully}
       inference: {condition: service_healthy}

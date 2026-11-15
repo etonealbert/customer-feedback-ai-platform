@@ -8,7 +8,6 @@ sample or a defensible estimate of real customer sentiment accuracy.
 import json
 from pathlib import Path
 
-
 EXAMPLES = {
     "performance": {
         "positive": [
@@ -187,6 +186,7 @@ def main() -> None:
     destination.write_text(
         "".join(json.dumps(row, ensure_ascii=False) + "\n" for row in rows),
         encoding="utf-8",
+        newline="\n",
     )
     print(f"Wrote {len(rows)} rows to {destination}")
 

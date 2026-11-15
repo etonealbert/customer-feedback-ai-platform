@@ -78,10 +78,15 @@ def test_inference_requires_internal_token(inference_client):
 
 def test_inference_validates_input_and_version(inference_client):
     headers = {"X-Service-Token": "unit-test-service-token"}
-    assert inference_client.post("/predict", headers=headers, json={"text": "   "}).status_code == 422
-    assert inference_client.post(
-        "/predict", headers=headers, json={"text": "Great app", "model_version": "bad"}
-    ).status_code == 422
+    assert (
+        inference_client.post("/predict", headers=headers, json={"text": "   "}).status_code == 422
+    )
+    assert (
+        inference_client.post(
+            "/predict", headers=headers, json={"text": "Great app", "model_version": "bad"}
+        ).status_code
+        == 422
+    )
     result = inference_client.post(
         "/predict", headers=headers, json={"text": "Great app", "model_version": "v2"}
     )
@@ -94,14 +99,18 @@ def test_kserve_v2_batch_and_shape_validation(inference_client):
     headers = {"X-Service-Token": "unit-test-service-token"}
     body = {
         "id": "batch-1",
-        "inputs": [{"name": "text", "shape": [2], "datatype": "BYTES", "data": ["Great app", "Bad app"]}],
+        "inputs": [
+            {"name": "text", "shape": [2], "datatype": "BYTES", "data": ["Great app", "Bad app"]}
+        ],
     }
     response = inference_client.post("/v2/models/v1/infer", headers=headers, json=body)
     assert response.status_code == 200
     assert response.json()["id"] == "batch-1"
     assert response.json()["outputs"][2]["shape"] == [2, EMBEDDING_DIM]
     body["inputs"][0]["shape"] = [1]
-    assert inference_client.post("/v2/models/v1/infer", headers=headers, json=body).status_code == 422
+    assert (
+        inference_client.post("/v2/models/v1/infer", headers=headers, json=body).status_code == 422
+    )
 
 
 def test_unhealthy_default_model_fails_startup(monkeypatch):

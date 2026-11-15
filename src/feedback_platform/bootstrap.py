@@ -1,4 +1,5 @@
 """Idempotent administrator-only schema setup and local demo tenant provisioning."""
+
 from pathlib import Path
 from uuid import UUID
 
@@ -19,9 +20,11 @@ def main():
     with psycopg.connect(settings.admin_database_url) as conn:
         conn.execute("SELECT pg_advisory_xact_lock(7328541)")
         if not conn.execute("SELECT 1 FROM pg_roles WHERE rolname='feedback_app'").fetchone():
-            conn.execute(sql.SQL("CREATE ROLE feedback_app LOGIN PASSWORD {}").format(
-                sql.Literal(settings.app_db_password)
-            ))
+            conn.execute(
+                sql.SQL("CREATE ROLE feedback_app LOGIN PASSWORD {}").format(
+                    sql.Literal(settings.app_db_password)
+                )
+            )
         conn.execute("ALTER ROLE feedback_app NOSUPERUSER NOBYPASSRLS NOCREATEDB NOCREATEROLE")
         conn.execute(Path(__file__).with_name("schema.sql").read_text(encoding="utf-8"))
         for tenant_id, name, key in [
@@ -32,8 +35,14 @@ def main():
                 continue
             if len(key) < 24:
                 raise RuntimeError("Demo API keys must contain at least 24 characters")
-            conn.execute("INSERT INTO tenants(id,name) VALUES(%s,%s) ON CONFLICT DO NOTHING", (tenant_id, name))
-            conn.execute("INSERT INTO api_keys(key_hash,tenant_id) VALUES(%s,%s) ON CONFLICT DO NOTHING", (hash_key(key), tenant_id))
+            conn.execute(
+                "INSERT INTO tenants(id,name) VALUES(%s,%s) ON CONFLICT DO NOTHING",
+                (tenant_id, name),
+            )
+            conn.execute(
+                "INSERT INTO api_keys(key_hash,tenant_id) VALUES(%s,%s) ON CONFLICT DO NOTHING",
+                (hash_key(key), tenant_id),
+            )
     print("Schema version 1 applied; configured demo tenants are ready.")
 
 

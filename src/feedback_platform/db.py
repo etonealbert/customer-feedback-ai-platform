@@ -12,8 +12,12 @@ from feedback_platform.settings import get_settings
 def make_pool():
     settings = get_settings()
     return AsyncConnectionPool(
-        settings.database_url, min_size=1, max_size=settings.db_pool_size,
-        timeout=5, open=False, kwargs={"row_factory": dict_row, "connect_timeout": 5},
+        settings.database_url,
+        min_size=1,
+        max_size=settings.db_pool_size,
+        timeout=5,
+        open=False,
+        kwargs={"row_factory": dict_row, "connect_timeout": 5},
         check=AsyncConnectionPool.check_connection,
     )
 

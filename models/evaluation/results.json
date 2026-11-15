@@ -1,0 +1,751 @@
+{
+  "measured_at_utc": "2026-11-14T12:15:19.151408+00:00",
+  "python": "3.12.13",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "scikit_learn": "1.9.1",
+  "training_seconds": 0.14947210001992062,
+  "metadata": {
+    "versions": [
+      {
+        "version": "v1",
+        "algorithm": "TF-IDF + logistic regression",
+        "ngram_range": [
+          1,
+          1
+        ],
+        "regularization_C": 4.0
+      },
+      {
+        "version": "v2",
+        "algorithm": "TF-IDF + logistic regression",
+        "ngram_range": [
+          1,
+          2
+        ],
+        "regularization_C": 8.0
+      }
+    ],
+    "embedding_version": "lsa-v1",
+    "embedding_dim": 128,
+    "semantic_dimensions": 64,
+    "embedding_algorithm": "TF-IDF + truncated SVD (LSA); padded to 128 dimensions",
+    "training_rows": 90,
+    "heldout_rows": 18,
+    "corpus_sha256": "5cd00752a1c8cc075930f1546e6d5a50347d6f267ca9312097da8d2f2dd0b799",
+    "dataset_kind": "small hand-authored synthetic demonstration",
+    "limitations": [
+      "English only; not validated for production or demographic subgroups.",
+      "Confidence is an uncalibrated classifier probability.",
+      "Topics are single-label predictions returned as a list.",
+      "LSA is a local semantic baseline, not a pretrained neural embedding model.",
+      "Completely unknown vocabulary maps to a zero vector; retrieval must abstain."
+    ]
+  },
+  "versions": {
+    "v1": {
+      "sentiment": {
+        "accuracy": 0.6111111111111112,
+        "macro_f1": 0.6047619047619047,
+        "labels": [
+          "negative",
+          "neutral",
+          "positive"
+        ],
+        "confusion_matrix": [
+          [
+            3,
+            1,
+            2
+          ],
+          [
+            0,
+            5,
+            1
+          ],
+          [
+            1,
+            2,
+            3
+          ]
+        ],
+        "classification_report": {
+          "negative": {
+            "precision": 0.75,
+            "recall": 0.5,
+            "f1-score": 0.6,
+            "support": 6.0
+          },
+          "neutral": {
+            "precision": 0.625,
+            "recall": 0.8333333333333334,
+            "f1-score": 0.7142857142857143,
+            "support": 6.0
+          },
+          "positive": {
+            "precision": 0.5,
+            "recall": 0.5,
+            "f1-score": 0.5,
+            "support": 6.0
+          },
+          "accuracy": 0.6111111111111112,
+          "macro avg": {
+            "precision": 0.625,
+            "recall": 0.6111111111111112,
+            "f1-score": 0.6047619047619047,
+            "support": 18.0
+          },
+          "weighted avg": {
+            "precision": 0.625,
+            "recall": 0.6111111111111112,
+            "f1-score": 0.6047619047619048,
+            "support": 18.0
+          }
+        }
+      },
+      "topic": {
+        "accuracy": 0.7222222222222222,
+        "macro_f1": 0.707936507936508,
+        "labels": [
+          "billing",
+          "features",
+          "performance",
+          "reliability",
+          "support",
+          "usability"
+        ],
+        "confusion_matrix": [
+          [
+            3,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            3,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            1,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            1,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            3,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            1,
+            0,
+            2
+          ]
+        ],
+        "classification_report": {
+          "billing": {
+            "precision": 0.75,
+            "recall": 1.0,
+            "f1-score": 0.8571428571428571,
+            "support": 3.0
+          },
+          "features": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 3.0
+          },
+          "performance": {
+            "precision": 0.5,
+            "recall": 0.3333333333333333,
+            "f1-score": 0.4,
+            "support": 3.0
+          },
+          "reliability": {
+            "precision": 0.3333333333333333,
+            "recall": 0.3333333333333333,
+            "f1-score": 0.3333333333333333,
+            "support": 3.0
+          },
+          "support": {
+            "precision": 0.75,
+            "recall": 1.0,
+            "f1-score": 0.8571428571428571,
+            "support": 3.0
+          },
+          "usability": {
+            "precision": 1.0,
+            "recall": 0.6666666666666666,
+            "f1-score": 0.8,
+            "support": 3.0
+          },
+          "accuracy": 0.7222222222222222,
+          "macro avg": {
+            "precision": 0.7222222222222223,
+            "recall": 0.7222222222222223,
+            "f1-score": 0.707936507936508,
+            "support": 18.0
+          },
+          "weighted avg": {
+            "precision": 0.7222222222222222,
+            "recall": 0.7222222222222222,
+            "f1-score": 0.7079365079365079,
+            "support": 18.0
+          }
+        }
+      },
+      "heldout_inference_ms": {
+        "p50": 4.871800018008798,
+        "p95": 6.46259500645101,
+        "p99": 6.783078992739319
+      },
+      "predictions": [
+        {
+          "id": "performance-positive-06",
+          "text": "The application is wonderfully quick on my older phone.",
+          "expected_sentiment": "positive",
+          "actual_sentiment": "negative",
+          "expected_topic": "performance",
+          "actual_topic": "billing",
+          "confidence": 0.530577259729744
+        },
+        {
+          "id": "performance-negative-06",
+          "text": "Mobile performance is awful with long delays after every tap.",
+          "expected_sentiment": "negative",
+          "actual_sentiment": "positive",
+          "expected_topic": "performance",
+          "actual_topic": "reliability",
+          "confidence": 0.42819403353557317
+        },
+        {
+          "id": "performance-neutral-06",
+          "text": "The application loads the dashboard before the activity page.",
+          "expected_sentiment": "neutral",
+          "actual_sentiment": "neutral",
+          "expected_topic": "performance",
+          "actual_topic": "performance",
+          "confidence": 0.5369683229381693
+        },
+        {
+          "id": "reliability-positive-06",
+          "text": "I love that the app now stays connected without errors.",
+          "expected_sentiment": "positive",
+          "actual_sentiment": "positive",
+          "expected_topic": "reliability",
+          "actual_topic": "performance",
+          "confidence": 0.6460201669727079
+        },
+        {
+          "id": "reliability-negative-06",
+          "text": "Terrible mobile crashes make the application unusable.",
+          "expected_sentiment": "negative",
+          "actual_sentiment": "negative",
+          "expected_topic": "reliability",
+          "actual_topic": "reliability",
+          "confidence": 0.6778896878396555
+        },
+        {
+          "id": "reliability-neutral-06",
+          "text": "My phone reconnects to the service when Wi-Fi returns.",
+          "expected_sentiment": "neutral",
+          "actual_sentiment": "neutral",
+          "expected_topic": "reliability",
+          "actual_topic": "support",
+          "confidence": 0.42601943491017663
+        },
+        {
+          "id": "billing-positive-06",
+          "text": "I love the reasonable monthly subscription cost.",
+          "expected_sentiment": "positive",
+          "actual_sentiment": "neutral",
+          "expected_topic": "billing",
+          "actual_topic": "billing",
+          "confidence": 0.4598861110494042
+        },
+        {
+          "id": "billing-negative-06",
+          "text": "Awful billing, another duplicate charge appeared on my invoice.",
+          "expected_sentiment": "negative",
+          "actual_sentiment": "neutral",
+          "expected_topic": "billing",
+          "actual_topic": "billing",
+          "confidence": 0.5725702226791768
+        },
+        {
+          "id": "billing-neutral-06",
+          "text": "Our annual subscription invoice contains the payment date.",
+          "expected_sentiment": "neutral",
+          "actual_sentiment": "neutral",
+          "expected_topic": "billing",
+          "actual_topic": "billing",
+          "confidence": 0.5939067269772431
+        },
+        {
+          "id": "usability-positive-06",
+          "text": "The application navigation is wonderfully simple and clear.",
+          "expected_sentiment": "positive",
+          "actual_sentiment": "positive",
+          "expected_topic": "usability",
+          "actual_topic": "usability",
+          "confidence": 0.49473936512026734
+        },
+        {
+          "id": "usability-negative-06",
+          "text": "The confusing mobile navigation hides every useful control.",
+          "expected_sentiment": "negative",
+          "actual_sentiment": "negative",
+          "expected_topic": "usability",
+          "actual_topic": "reliability",
+          "confidence": 0.48779266789039
+        },
+        {
+          "id": "usability-neutral-06",
+          "text": "The navigation menu appears on the left side of the screen.",
+          "expected_sentiment": "neutral",
+          "actual_sentiment": "neutral",
+          "expected_topic": "usability",
+          "actual_topic": "usability",
+          "confidence": 0.5576147926579446
+        },
+        {
+          "id": "support-positive-06",
+          "text": "Your helpful support agent gave me an excellent answer.",
+          "expected_sentiment": "positive",
+          "actual_sentiment": "positive",
+          "expected_topic": "support",
+          "actual_topic": "support",
+          "confidence": 0.44025540493557275
+        },
+        {
+          "id": "support-negative-06",
+          "text": "The support team never replied and my complaint remains unresolved.",
+          "expected_sentiment": "negative",
+          "actual_sentiment": "positive",
+          "expected_topic": "support",
+          "actual_topic": "support",
+          "confidence": 0.5040861711770942
+        },
+        {
+          "id": "support-neutral-06",
+          "text": "The support agent forwarded my question to another team.",
+          "expected_sentiment": "neutral",
+          "actual_sentiment": "positive",
+          "expected_topic": "support",
+          "actual_topic": "support",
+          "confidence": 0.3653325792862753
+        },
+        {
+          "id": "features-positive-06",
+          "text": "The offline feature is fantastic for working while travelling.",
+          "expected_sentiment": "positive",
+          "actual_sentiment": "neutral",
+          "expected_topic": "features",
+          "actual_topic": "features",
+          "confidence": 0.5758110167158331
+        },
+        {
+          "id": "features-negative-06",
+          "text": "The lack of offline access is frustrating when I travel.",
+          "expected_sentiment": "negative",
+          "actual_sentiment": "negative",
+          "expected_topic": "features",
+          "actual_topic": "features",
+          "confidence": 0.5473345384270035
+        },
+        {
+          "id": "features-neutral-06",
+          "text": "The export feature offers a CSV format for reports.",
+          "expected_sentiment": "neutral",
+          "actual_sentiment": "neutral",
+          "expected_topic": "features",
+          "actual_topic": "features",
+          "confidence": 0.4804104697875825
+        }
+      ]
+    },
+    "v2": {
+      "sentiment": {
+        "accuracy": 0.6111111111111112,
+        "macro_f1": 0.6091686091686092,
+        "labels": [
+          "negative",
+          "neutral",
+          "positive"
+        ],
+        "confusion_matrix": [
+          [
+            3,
+            1,
+            2
+          ],
+          [
+            1,
+            4,
+            1
+          ],
+          [
+            1,
+            1,
+            4
+          ]
+        ],
+        "classification_report": {
+          "negative": {
+            "precision": 0.6,
+            "recall": 0.5,
+            "f1-score": 0.5454545454545454,
+            "support": 6.0
+          },
+          "neutral": {
+            "precision": 0.6666666666666666,
+            "recall": 0.6666666666666666,
+            "f1-score": 0.6666666666666666,
+            "support": 6.0
+          },
+          "positive": {
+            "precision": 0.5714285714285714,
+            "recall": 0.6666666666666666,
+            "f1-score": 0.6153846153846154,
+            "support": 6.0
+          },
+          "accuracy": 0.6111111111111112,
+          "macro avg": {
+            "precision": 0.6126984126984126,
+            "recall": 0.611111111111111,
+            "f1-score": 0.6091686091686092,
+            "support": 18.0
+          },
+          "weighted avg": {
+            "precision": 0.6126984126984127,
+            "recall": 0.6111111111111112,
+            "f1-score": 0.6091686091686092,
+            "support": 18.0
+          }
+        }
+      },
+      "topic": {
+        "accuracy": 0.7222222222222222,
+        "macro_f1": 0.707936507936508,
+        "labels": [
+          "billing",
+          "features",
+          "performance",
+          "reliability",
+          "support",
+          "usability"
+        ],
+        "confusion_matrix": [
+          [
+            3,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            3,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            1,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            1,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            3,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            1,
+            0,
+            2
+          ]
+        ],
+        "classification_report": {
+          "billing": {
+            "precision": 0.75,
+            "recall": 1.0,
+            "f1-score": 0.8571428571428571,
+            "support": 3.0
+          },
+          "features": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 3.0
+          },
+          "performance": {
+            "precision": 0.5,
+            "recall": 0.3333333333333333,
+            "f1-score": 0.4,
+            "support": 3.0
+          },
+          "reliability": {
+            "precision": 0.3333333333333333,
+            "recall": 0.3333333333333333,
+            "f1-score": 0.3333333333333333,
+            "support": 3.0
+          },
+          "support": {
+            "precision": 0.75,
+            "recall": 1.0,
+            "f1-score": 0.8571428571428571,
+            "support": 3.0
+          },
+          "usability": {
+            "precision": 1.0,
+            "recall": 0.6666666666666666,
+            "f1-score": 0.8,
+            "support": 3.0
+          },
+          "accuracy": 0.7222222222222222,
+          "macro avg": {
+            "precision": 0.7222222222222223,
+            "recall": 0.7222222222222223,
+            "f1-score": 0.707936507936508,
+            "support": 18.0
+          },
+          "weighted avg": {
+            "precision": 0.7222222222222222,
+            "recall": 0.7222222222222222,
+            "f1-score": 0.7079365079365079,
+            "support": 18.0
+          }
+        }
+      },
+      "heldout_inference_ms": {
+        "p50": 4.706700012320653,
+        "p95": 6.023404993175063,
+        "p99": 6.026600997720379
+      },
+      "predictions": [
+        {
+          "id": "performance-positive-06",
+          "text": "The application is wonderfully quick on my older phone.",
+          "expected_sentiment": "positive",
+          "actual_sentiment": "negative",
+          "expected_topic": "performance",
+          "actual_topic": "billing",
+          "confidence": 0.6051656308564388
+        },
+        {
+          "id": "performance-negative-06",
+          "text": "Mobile performance is awful with long delays after every tap.",
+          "expected_sentiment": "negative",
+          "actual_sentiment": "positive",
+          "expected_topic": "performance",
+          "actual_topic": "reliability",
+          "confidence": 0.4345481044155406
+        },
+        {
+          "id": "performance-neutral-06",
+          "text": "The application loads the dashboard before the activity page.",
+          "expected_sentiment": "neutral",
+          "actual_sentiment": "neutral",
+          "expected_topic": "performance",
+          "actual_topic": "performance",
+          "confidence": 0.4501315679276295
+        },
+        {
+          "id": "reliability-positive-06",
+          "text": "I love that the app now stays connected without errors.",
+          "expected_sentiment": "positive",
+          "actual_sentiment": "positive",
+          "expected_topic": "reliability",
+          "actual_topic": "performance",
+          "confidence": 0.5288606002396204
+        },
+        {
+          "id": "reliability-negative-06",
+          "text": "Terrible mobile crashes make the application unusable.",
+          "expected_sentiment": "negative",
+          "actual_sentiment": "negative",
+          "expected_topic": "reliability",
+          "actual_topic": "reliability",
+          "confidence": 0.6817122513154715
+        },
+        {
+          "id": "reliability-neutral-06",
+          "text": "My phone reconnects to the service when Wi-Fi returns.",
+          "expected_sentiment": "neutral",
+          "actual_sentiment": "negative",
+          "expected_topic": "reliability",
+          "actual_topic": "support",
+          "confidence": 0.46879638644894744
+        },
+        {
+          "id": "billing-positive-06",
+          "text": "I love the reasonable monthly subscription cost.",
+          "expected_sentiment": "positive",
+          "actual_sentiment": "positive",
+          "expected_topic": "billing",
+          "actual_topic": "billing",
+          "confidence": 0.5145865616409848
+        },
+        {
+          "id": "billing-negative-06",
+          "text": "Awful billing, another duplicate charge appeared on my invoice.",
+          "expected_sentiment": "negative",
+          "actual_sentiment": "neutral",
+          "expected_topic": "billing",
+          "actual_topic": "billing",
+          "confidence": 0.5143893306891012
+        },
+        {
+          "id": "billing-neutral-06",
+          "text": "Our annual subscription invoice contains the payment date.",
+          "expected_sentiment": "neutral",
+          "actual_sentiment": "neutral",
+          "expected_topic": "billing",
+          "actual_topic": "billing",
+          "confidence": 0.4954313698114743
+        },
+        {
+          "id": "usability-positive-06",
+          "text": "The application navigation is wonderfully simple and clear.",
+          "expected_sentiment": "positive",
+          "actual_sentiment": "positive",
+          "expected_topic": "usability",
+          "actual_topic": "usability",
+          "confidence": 0.4855223880518615
+        },
+        {
+          "id": "usability-negative-06",
+          "text": "The confusing mobile navigation hides every useful control.",
+          "expected_sentiment": "negative",
+          "actual_sentiment": "negative",
+          "expected_topic": "usability",
+          "actual_topic": "reliability",
+          "confidence": 0.4686229360779753
+        },
+        {
+          "id": "usability-neutral-06",
+          "text": "The navigation menu appears on the left side of the screen.",
+          "expected_sentiment": "neutral",
+          "actual_sentiment": "neutral",
+          "expected_topic": "usability",
+          "actual_topic": "usability",
+          "confidence": 0.628906703783163
+        },
+        {
+          "id": "support-positive-06",
+          "text": "Your helpful support agent gave me an excellent answer.",
+          "expected_sentiment": "positive",
+          "actual_sentiment": "positive",
+          "expected_topic": "support",
+          "actual_topic": "support",
+          "confidence": 0.3884738738587474
+        },
+        {
+          "id": "support-negative-06",
+          "text": "The support team never replied and my complaint remains unresolved.",
+          "expected_sentiment": "negative",
+          "actual_sentiment": "positive",
+          "expected_topic": "support",
+          "actual_topic": "support",
+          "confidence": 0.5078780173537445
+        },
+        {
+          "id": "support-neutral-06",
+          "text": "The support agent forwarded my question to another team.",
+          "expected_sentiment": "neutral",
+          "actual_sentiment": "positive",
+          "expected_topic": "support",
+          "actual_topic": "support",
+          "confidence": 0.36097890292423307
+        },
+        {
+          "id": "features-positive-06",
+          "text": "The offline feature is fantastic for working while travelling.",
+          "expected_sentiment": "positive",
+          "actual_sentiment": "neutral",
+          "expected_topic": "features",
+          "actual_topic": "features",
+          "confidence": 0.5648280623783455
+        },
+        {
+          "id": "features-negative-06",
+          "text": "The lack of offline access is frustrating when I travel.",
+          "expected_sentiment": "negative",
+          "actual_sentiment": "negative",
+          "expected_topic": "features",
+          "actual_topic": "features",
+          "confidence": 0.5517042798344822
+        },
+        {
+          "id": "features-neutral-06",
+          "text": "The export feature offers a CSV format for reports.",
+          "expected_sentiment": "neutral",
+          "actual_sentiment": "neutral",
+          "expected_topic": "features",
+          "actual_topic": "features",
+          "confidence": 0.4194546151058054
+        }
+      ]
+    }
+  },
+  "changed_predictions": [
+    {
+      "id": "reliability-neutral-06",
+      "text": "My phone reconnects to the service when Wi-Fi returns.",
+      "v1_sentiment": "neutral",
+      "v2_sentiment": "negative",
+      "v1_topic": "support",
+      "v2_topic": "support"
+    },
+    {
+      "id": "billing-positive-06",
+      "text": "I love the reasonable monthly subscription cost.",
+      "v1_sentiment": "neutral",
+      "v2_sentiment": "positive",
+      "v1_topic": "billing",
+      "v2_topic": "billing"
+    }
+  ],
+  "interpretation": "Observed results on 18 hand-authored synthetic holdout examples. This is a functional smoke test, not a production quality estimate. Latency here is a tiny in-process sample, not a throughput benchmark."
+}

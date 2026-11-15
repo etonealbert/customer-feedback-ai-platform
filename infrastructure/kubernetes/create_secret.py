@@ -22,8 +22,12 @@ def main() -> None:
             key, value = line.split("=", 1)
             values[key] = value.strip().strip("\"'")
     required = (
-        "POSTGRES_PASSWORD", "APP_DB_PASSWORD", "INTERNAL_API_KEY",
-        "DEMO_TENANT_A_KEY", "DEMO_TENANT_B_KEY", "GRAFANA_PASSWORD",
+        "POSTGRES_PASSWORD",
+        "APP_DB_PASSWORD",
+        "INTERNAL_API_KEY",
+        "DEMO_TENANT_A_KEY",
+        "DEMO_TENANT_B_KEY",
+        "GRAFANA_PASSWORD",
     )
     missing = [name for name in required if not values.get(name)]
     if missing:
@@ -41,14 +45,18 @@ def main() -> None:
     namespace = {"apiVersion": "v1", "kind": "Namespace", "metadata": {"name": "feedback-ai"}}
     # Only this Job receives ADMIN_DATABASE_URL. Application deployments select individual keys.
     secret = {
-        "apiVersion": "v1", "kind": "Secret", "type": "Opaque",
+        "apiVersion": "v1",
+        "kind": "Secret",
+        "type": "Opaque",
         "metadata": {"name": "feedback-secrets", "namespace": "feedback-ai"},
         "stringData": values,
     }
     for resource in (namespace, secret):
         subprocess.run(
             ["kubectl", "apply", "-f", "-"],
-            input=json.dumps(resource), text=True, check=True,
+            input=json.dumps(resource),
+            text=True,
+            check=True,
         )
 
 

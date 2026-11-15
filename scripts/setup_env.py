@@ -1,11 +1,18 @@
 """Create local secrets without displaying them or replacing an existing .env."""
+
 import secrets
 from pathlib import Path
 
 root = Path(__file__).resolve().parents[1]
 destination = root / ".env"
-keys = ["POSTGRES_PASSWORD", "APP_DB_PASSWORD", "INTERNAL_API_KEY", "DEMO_TENANT_A_KEY",
-        "DEMO_TENANT_B_KEY", "GRAFANA_PASSWORD"]
+keys = [
+    "POSTGRES_PASSWORD",
+    "APP_DB_PASSWORD",
+    "INTERNAL_API_KEY",
+    "DEMO_TENANT_A_KEY",
+    "DEMO_TENANT_B_KEY",
+    "GRAFANA_PASSWORD",
+]
 if destination.exists():
     print(".env already exists; preserved.")
 else:

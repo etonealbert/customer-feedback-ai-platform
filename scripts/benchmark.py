@@ -170,15 +170,15 @@ def render_svg(report, path):
     svg = [
         '<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="680" viewBox="0 0 1100 680">',
         '<rect width="1100" height="680" fill="#f7fafc"/>',
-        '<style>text{font-family:Arial,sans-serif;fill:#172b4d}.label{font-size:13px}.title{font-size:25px;font-weight:bold}</style>',
+        "<style>text{font-family:Arial,sans-serif;fill:#172b4d}.label{font-size:13px}.title{font-size:25px;font-weight:bold}</style>",
         '<text x="50" y="45" class="title">Customer feedback platform: observed load test</text>',
         f'<text x="50" y="72" class="label">{escape(report["started_at_utc"])} · '
-        f'{summary["requested"]} requests · concurrency {report["configuration"]["concurrency"]}</text>',
+        f"{summary['requested']} requests · concurrency {report['configuration']['concurrency']}</text>",
         f'<text x="50" y="105" class="label">Accepted: {summary["accepted"]} · '
-        f'Completed: {summary["completed"]} · HTTP failures: {summary["http_failed"]} · '
-        f'Processing failures: {summary["processing_failed"]} · Timeouts: {summary["timed_out"]}</text>',
+        f"Completed: {summary['completed']} · HTTP failures: {summary['http_failed']} · "
+        f"Processing failures: {summary['processing_failed']} · Timeouts: {summary['timed_out']}</text>",
         f'<text x="50" y="132" class="label">Accepted throughput: {summary["accepted_per_second"]:.2f}/s · '
-        f'Completed throughput: {summary["completed_per_second"]:.2f}/s</text>',
+        f"Completed throughput: {summary['completed_per_second']:.2f}/s</text>",
     ]
     for origin, title, key, color in (
         (50, "Ingestion latency (ms)", "ingestion_ms", "#006d77"),
@@ -192,23 +192,27 @@ def render_svg(report, path):
             y = y0 - height * tick / 4
             svg.append(f'<path d="M{x0} {y}h{width}" stroke="#d5dee8"/>')
             svg.append(
-                f'<text x="{x0-7}" y="{y+4}" text-anchor="end" class="label">'
-                f'{maximum*tick/4:.0f}</text>'
+                f'<text x="{x0 - 7}" y="{y + 4}" text-anchor="end" class="label">'
+                f"{maximum * tick / 4:.0f}</text>"
             )
         if values:
             points = " ".join(
-                f"{x0 + width * index / max(1, len(values)-1):.1f},{y0-height*value/maximum:.1f}"
+                f"{x0 + width * index / max(1, len(values) - 1):.1f},{y0 - height * value / maximum:.1f}"
                 for index, value in enumerate(values)
             )
-            svg.append(f'<polyline points="{points}" fill="none" stroke="{color}" stroke-width="3"/>')
+            svg.append(
+                f'<polyline points="{points}" fill="none" stroke="{color}" stroke-width="3"/>'
+            )
         else:
-            svg.append(f'<text x="{x0+60}" y="350" class="label">No successful observations</text>')
+            svg.append(
+                f'<text x="{x0 + 60}" y="350" class="label">No successful observations</text>'
+            )
         for tick in range(5):
             svg.append(
-                f'<text x="{x0+width*tick/4}" y="490" text-anchor="middle" class="label">'
-                f'{tick*25}%</text>'
+                f'<text x="{x0 + width * tick / 4}" y="490" text-anchor="middle" class="label">'
+                f"{tick * 25}%</text>"
             )
-        svg.append(f'<text x="{x0+120}" y="515" class="label">Observed percentile</text>')
+        svg.append(f'<text x="{x0 + 120}" y="515" class="label">Observed percentile</text>')
         p = summary[key]
         values_text = " · ".join(
             f"{name}: {p[name]:.2f}" if p[name] is not None else f"{name}: n/a"
@@ -219,7 +223,7 @@ def render_svg(report, path):
         [
             '<text x="50" y="600" class="label">Completion latency includes polling and is an upper bound. Synthetic workload; no production capacity claim.</text>',
             '<text x="50" y="625" class="label">CPU / memory time series, raw samples, configuration and provenance are in the adjacent JSON file.</text>',
-            '</svg>',
+            "</svg>",
         ]
     )
     path.write_text("\n".join(svg), encoding="utf-8")
@@ -236,7 +240,11 @@ async def main(args):
         "run_id": label,
         "started_at_utc": datetime.now(UTC).isoformat(),
         "configuration": vars(args).copy(),
-        "host": {"platform": platform.platform(), "python": platform.python_version(), "cpu_count": os.cpu_count()},
+        "host": {
+            "platform": platform.platform(),
+            "python": platform.python_version(),
+            "cpu_count": os.cpu_count(),
+        },
         "methodology": {
             "latency_units": "milliseconds",
             "ingestion": "time from acquiring concurrency slot until HTTP response; accepted requests only",
@@ -246,7 +254,10 @@ async def main(args):
         },
     }
     try:
-        report["git"] = {"commit": command("git", "rev-parse", "HEAD"), "dirty": bool(command("git", "status", "--porcelain"))}
+        report["git"] = {
+            "commit": command("git", "rev-parse", "HEAD"),
+            "dirty": bool(command("git", "status", "--porcelain")),
+        }
     except (OSError, RuntimeError, subprocess.TimeoutExpired) as exc:
         report["git"] = {"unavailable": str(exc)}
     try:
@@ -256,11 +267,19 @@ async def main(args):
     stop, samples = asyncio.Event(), []
     monitor_task = asyncio.create_task(monitor(stop, samples)) if not args.no_stats else None
     try:
-        limits = httpx.Limits(max_connections=args.concurrency, max_keepalive_connections=args.concurrency)
-        async with httpx.AsyncClient(headers={"Authorization": f"Bearer {key}"}, timeout=30, limits=limits) as client:
+        limits = httpx.Limits(
+            max_connections=args.concurrency, max_keepalive_connections=args.concurrency
+        )
+        async with httpx.AsyncClient(
+            headers={"Authorization": f"Bearer {key}"}, timeout=30, limits=limits
+        ) as client:
             if args.warmup:
-                report["warmup"] = await run_workload(client, args.api, args.warmup, args.concurrency, args.timeout, label + "-warmup")
-            report["results"] = await run_workload(client, args.api, args.count, args.concurrency, args.timeout, label)
+                report["warmup"] = await run_workload(
+                    client, args.api, args.warmup, args.concurrency, args.timeout, label + "-warmup"
+                )
+            report["results"] = await run_workload(
+                client, args.api, args.count, args.concurrency, args.timeout, label
+            )
     finally:
         stop.set()
         if monitor_task:
@@ -287,6 +306,11 @@ if __name__ == "__main__":
     parser.add_argument("--no-stats", action="store_true")
     parser.add_argument("--output", default="docs/evidence/load-local")
     arguments = parser.parse_args()
-    if arguments.count < 1 or arguments.concurrency < 1 or arguments.timeout <= 0 or arguments.warmup < 0:
+    if (
+        arguments.count < 1
+        or arguments.concurrency < 1
+        or arguments.timeout <= 0
+        or arguments.warmup < 0
+    ):
         parser.error("count and concurrency must be positive; timeout > 0; warmup >= 0")
     raise SystemExit(asyncio.run(main(arguments)))

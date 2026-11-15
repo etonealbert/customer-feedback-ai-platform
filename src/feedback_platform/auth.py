@@ -20,10 +20,13 @@ async def tenant_auth(
     request: Request, credentials: HTTPAuthorizationCredentials | None = Depends(bearer)
 ) -> UUID:
     if credentials is None or len(credentials.credentials) > 512:
-        raise HTTPException(401, "Valid bearer API key required", headers={"WWW-Authenticate": "Bearer"})
+        raise HTTPException(
+            401, "Valid bearer API key required", headers={"WWW-Authenticate": "Bearer"}
+        )
     async with request.app.state.pool.connection() as conn:
         row = await fetchone(
-            conn, "SELECT tenant_id FROM api_keys WHERE key_hash=%s AND active=true",
+            conn,
+            "SELECT tenant_id FROM api_keys WHERE key_hash=%s AND active=true",
             (hash_key(credentials.credentials),),
         )
     if row is None:

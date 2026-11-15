@@ -27,6 +27,7 @@ packages = ["src/feedback_platform"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
 markers = ["integration: requires the running Docker Compose stack"]
 
 [tool.ruff]

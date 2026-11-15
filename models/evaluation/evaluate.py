@@ -75,7 +75,9 @@ def evaluate() -> dict:
             "v1_topic": first["topics"][0],
             "v2_topic": second["topics"][0],
         }
-        for row, first, second in zip(test, all_predictions["v1"], all_predictions["v2"], strict=True)
+        for row, first, second in zip(
+            test, all_predictions["v1"], all_predictions["v2"], strict=True
+        )
         if first["sentiment"] != second["sentiment"] or first["topics"] != second["topics"]
     ]
     return {

@@ -1,18 +1,21 @@
 FROM python:3.12.10-slim-bookworm
 
+COPY --from=ghcr.io/astral-sh/uv:0.11.26 /uv /uvx /usr/local/bin/
+
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
-    PIP_NO_CACHE_DIR=1 \
+    UV_NO_CACHE=1 \
+    PATH="/app/.venv/bin:$PATH" \
     OMP_NUM_THREADS=1 \
     OPENBLAS_NUM_THREADS=1 \
     MKL_NUM_THREADS=1
 WORKDIR /app
 
 # The same immutable application image is independently deployed with each service command.
-COPY pyproject.toml README.md ./
+COPY pyproject.toml uv.lock README.md ./
 COPY src ./src
 COPY models ./models
-RUN pip install --no-cache-dir . \
+RUN uv sync --frozen --no-dev --no-editable \
     && groupadd --gid 10001 app \
     && useradd --uid 10001 --gid app --no-create-home --shell /usr/sbin/nologin app \
     && chown -R app:app /app

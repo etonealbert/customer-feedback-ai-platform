@@ -211,6 +211,9 @@ spec:
             - name: OPENAI_MODEL
               valueFrom:
                 secretKeyRef: {name: feedback-secrets, key: OPENAI_MODEL, optional: true}
+            - name: LLM_PROVIDER
+              valueFrom:
+                secretKeyRef: {name: feedback-secrets, key: LLM_PROVIDER, optional: true}
           securityContext:
             allowPrivilegeEscalation: false
             readOnlyRootFilesystem: true

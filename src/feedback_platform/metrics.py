@@ -11,12 +11,15 @@ HTTP_DURATION = Histogram(
 )
 PROCESSING = Histogram("feedback_processing_seconds", "Worker processing time")
 PROCESSING_LAG = Histogram(
-    "feedback_processing_lag_seconds", "Accepted-to-completed latency",
+    "feedback_processing_lag_seconds",
+    "Accepted-to-completed latency",
     buckets=(0.1, 0.5, 1, 2, 5, 10, 30, 60, 120, 300, 600),
 )
 WORKER_RESULTS = Counter("feedback_worker_results_total", "Worker results", ["outcome"])
 OUTBOX_PENDING = Gauge("feedback_outbox_pending", "Unpublished durable outbox events")
-CONSUMER_LAG = Gauge("feedback_consumer_lag", "Broker high watermark minus committed offset", ["partition"])
+CONSUMER_LAG = Gauge(
+    "feedback_consumer_lag", "Broker high watermark minus committed offset", ["partition"]
+)
 
 
 def install_metrics(app: FastAPI, service: str):
@@ -33,7 +36,9 @@ def install_metrics(app: FastAPI, service: str):
             path = getattr(route, "path", "unmatched")
             if not path.startswith(("/metrics", "/health")):
                 HTTP_REQUESTS.labels(service, request.method, path, str(status)).inc()
-                HTTP_DURATION.labels(service, request.method, path).observe(time.perf_counter() - start)
+                HTTP_DURATION.labels(service, request.method, path).observe(
+                    time.perf_counter() - start
+                )
 
     @app.get("/metrics", include_in_schema=False)
     async def metrics():

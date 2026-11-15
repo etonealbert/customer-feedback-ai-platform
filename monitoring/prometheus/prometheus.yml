@@ -7,17 +7,14 @@ rule_files:
 
 scrape_configs:
   - job_name: feedback-services
-    static_configs:
-      - targets: [ingestion:8000]
-        labels: {service: ingestion}
-      - targets: [inference:8000]
-        labels: {service: inference}
-      - targets: [rag:8000]
-        labels: {service: rag}
-      - targets: [outbox:8000]
-        labels: {service: outbox}
-      - targets: [worker:8000]
-        labels: {service: worker}
+    dns_sd_configs:
+      - names: [ingestion, inference, rag, outbox, worker]
+        type: A
+        port: 8000
+        refresh_interval: 5s
+    relabel_configs:
+      - source_labels: [__meta_dns_name]
+        target_label: service
   - job_name: prometheus
     static_configs:
       - targets: [localhost:9090]

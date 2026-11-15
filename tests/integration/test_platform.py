@@ -2,9 +2,11 @@
 
 from __future__ import annotations
 
+import os
 from concurrent.futures import ThreadPoolExecutor
 from uuid import uuid4
 
+import psycopg
 import pytest
 
 pytestmark = pytest.mark.integration
@@ -122,7 +124,72 @@ def test_authentication_and_request_validation(platform):
         )
         assert response.status_code in {401, 403}, response.text
     for body in ({"text": ""}, {"text": " "}, {"text": "x" * 10001}):
-        response = client.post(
-            platform["api"] + "/v1/feedback", headers=platform["a"], json=body
-        )
+        response = client.post(platform["api"] + "/v1/feedback", headers=platform["a"], json=body)
         assert response.status_code == 422, response.text
+
+
+def test_model_reprocessing_history_and_rollback(platform, wait_for_prediction):
+    feedback = submit(
+        platform, "The mobile app is fast but billing support is awful. " + str(uuid4())
+    )
+    original = wait_for_prediction(feedback["id"])
+    assert original["prediction"]["model_version"] == "v1"
+    url = f"{platform['api']}/v1/feedback/{feedback['id']}"
+    response = platform["client"].post(
+        url + "/reprocess", headers=platform["b"], json={"model_version": "v2"}
+    )
+    assert response.status_code == 404, response.text
+    response = platform["client"].get(url + "/predictions", headers=platform["b"])
+    assert response.status_code == 404, response.text
+    for version in ("v2", "v1"):
+        response = platform["client"].post(
+            url + "/reprocess", headers=platform["a"], json={"model_version": version}
+        )
+        assert response.status_code == 202, response.text
+        result = wait_for_prediction(feedback["id"])
+        assert result["prediction"]["model_version"] == version
+    response = platform["client"].get(url + "/predictions", headers=platform["a"])
+    assert response.status_code == 200, response.text
+    history = response.json()["items"]
+    assert {item["model_version"] for item in history} == {"v1", "v2"}
+    assert len(history) == 2, "Rollback should reuse the immutable v1 prediction"
+
+
+def test_postgresql_row_security_denies_missing_and_foreign_tenant(platform, wait_for_prediction):
+    a = submit(platform, "The mobile app is easy to use. " + str(uuid4()), "a")
+    b = submit(platform, "The mobile app keeps crashing. " + str(uuid4()), "b")
+    wait_for_prediction(a["id"], "a")
+    wait_for_prediction(b["id"], "b")
+    connection = os.getenv("TEST_DATABASE_URL")
+    if connection is None:
+        password = os.getenv("APP_DB_PASSWORD")
+        assert password, "APP_DB_PASSWORD or TEST_DATABASE_URL is required for the RLS test"
+        connection = psycopg.conninfo.make_conninfo(
+            host="localhost",
+            port=int(os.getenv("POSTGRES_PORT", "55432")),
+            dbname="feedback",
+            user="feedback_app",
+            password=password,
+        )
+    with psycopg.connect(connection, connect_timeout=10) as conn:
+        role = conn.execute(
+            "SELECT rolsuper,rolbypassrls FROM pg_roles WHERE rolname=current_user"
+        ).fetchone()
+        assert role == (False, False), "Tests must use the restricted application role"
+        for table in ("feedback", "predictions"):
+            assert conn.execute(f"SELECT count(*) FROM {table}").fetchone()[0] == 0
+        conn.execute("SELECT set_config('app.tenant_id', %s, true)", (a["tenant_id"],))
+        assert (
+            conn.execute("SELECT count(*) FROM feedback WHERE id=%s", (a["id"],)).fetchone()[0] == 1
+        )
+        assert (
+            conn.execute("SELECT count(*) FROM feedback WHERE id=%s", (b["id"],)).fetchone()[0] == 0
+        )
+        assert (
+            conn.execute(
+                "SELECT count(*) FROM predictions WHERE feedback_id=%s", (b["id"],)
+            ).fetchone()[0]
+            == 0
+        )
+        with pytest.raises(psycopg.errors.InsufficientPrivilege), conn.transaction():
+            conn.execute("UPDATE feedback SET tenant_id=%s WHERE id=%s", (b["tenant_id"], a["id"]))

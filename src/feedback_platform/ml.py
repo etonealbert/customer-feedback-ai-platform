@@ -30,7 +30,17 @@ def corpus_path() -> Path:
     configured = os.getenv("MODEL_CORPUS_PATH")
     if configured:
         return Path(configured)
-    return Path(__file__).resolve().parents[2] / "models" / "training" / "feedback.jsonl"
+    module = Path(__file__).resolve()
+    candidates = [
+        module.parents[2] / "models" / "training" / "feedback.jsonl",  # source checkout
+        module.parents[1] / "models" / "training" / "feedback.jsonl",  # installed wheel
+    ]
+    for candidate in candidates:
+        if candidate.is_file():
+            return candidate
+    raise FileNotFoundError(
+        "Training corpus missing; set MODEL_CORPUS_PATH or reinstall the package"
+    )
 
 
 def load_corpus() -> list[dict[str, str]]:
@@ -46,7 +56,11 @@ class ModelRegistry:
         training = [row for row in corpus if row["split"] == "train"]
         self.training_count = len(training)
         self.evaluation_count = sum(row["split"] == "test" for row in corpus)
-        self.corpus_sha256 = hashlib.sha256(corpus_path().read_bytes()).hexdigest()
+        # Text mode canonicalizes line endings, so checkouts have the same hash
+        # on Windows and Linux even when Git's autocrlf setting differs.
+        self.corpus_sha256 = hashlib.sha256(
+            corpus_path().read_text(encoding="utf-8").encode("utf-8")
+        ).hexdigest()
         texts = [row["text"] for row in training]
         self.models: dict[str, dict[str, Pipeline]] = {}
         for version in MODEL_VERSIONS:
@@ -89,7 +103,9 @@ class ModelRegistry:
 
     def require_version(self, version: str) -> None:
         if version not in self.models:
-            raise ValueError(f"Unknown model version: {version}. Available: {', '.join(MODEL_VERSIONS)}")
+            raise ValueError(
+                f"Unknown model version: {version}. Available: {', '.join(MODEL_VERSIONS)}"
+            )
 
     def embed(self, text: str) -> list[float]:
         vector = self.reducer.transform(self.vectorizer.transform([text]))
