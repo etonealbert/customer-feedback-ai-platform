@@ -2,6 +2,10 @@
 
 A small, working enterprise-style AI backend: authenticated feedback ingestion, durable asynchronous processing, versioned CPU inference, PostgreSQL/pgvector retrieval, and cited insights. No frontend, GPU, paid API, or cloud account is needed for the default demo.
 
+**Measured evidence:** 4,000 load-test events completed with no failures; worker, broker, database, and unhealthy-model recovery experiments passed. A real local Kubernetes deployment exercised three-worker scaling, tenant-isolated processing/search, readiness protection, and rollback. Read the [benchmark report](docs/benchmarks.md) and [Kubernetes evidence](docs/evidence/kubernetes-local.json) for scope and limits.
+
+**Validation:** 34 tests pass. CPU autoscaling was exercised from one to four inference replicas. See the [verification record](docs/verification.md) for tested capabilities and the optional integrations that remain untested.
+
 ## Start locally
 
 Requirements: Docker Desktop with Linux containers, Docker Compose v2, and Python 3.12+ (or [uv](https://docs.astral.sh/uv/)). Allow roughly 4 GB of free memory for the whole stack.

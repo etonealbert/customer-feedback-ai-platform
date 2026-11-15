@@ -23,7 +23,7 @@ lint:
 	uv run ruff check .
 
 load:
-	uv run python tests/load/benchmark.py
+	uv run python scripts/benchmark.py
 
 validate:
 	docker compose config --quiet

@@ -19,10 +19,11 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class Experiments:
-    def __init__(self, api, key, timeout, count):
+    def __init__(self, api, key, timeout, count, outage_seconds=25):
         self.api, self.timeout, self.count = api, timeout, count
         self.client = httpx.Client(headers={"Authorization": f"Bearer {key}"}, timeout=15)
         self.commands = []
+        self.outage_seconds = outage_seconds
 
     def compose(self, *args, override=None, check=True, timeout=120):
         command = [
@@ -183,6 +184,7 @@ class Experiments:
             ids = self.submit()
             before = self.statuses(ids)
             assert set(before.values()) == {"pending"}, before
+            time.sleep(self.outage_seconds)
             self.compose("start", "kafka")
             predictions = self.completed(ids)
             audit = self.audit(ids)
@@ -190,6 +192,7 @@ class Experiments:
             return {
                 "feedback_ids": ids,
                 "accepted_during_outage": len(ids),
+                "outage_hold_seconds": self.outage_seconds,
                 "before_recovery": before,
                 "completed": len(predictions),
                 "audit": audit,
@@ -311,7 +314,7 @@ def main(args):
     key = os.getenv("DEMO_TENANT_A_KEY")
     if not key:
         raise SystemExit("DEMO_TENANT_A_KEY required; run scripts/setup_env.py first")
-    experiment = Experiments(args.api, key, args.timeout, args.count)
+    experiment = Experiments(args.api, key, args.timeout, args.count, args.outage_seconds)
     report = {
         "schema_version": 1,
         "started_at_utc": datetime.now(UTC).isoformat(),
@@ -365,6 +368,7 @@ if __name__ == "__main__":
     parser.add_argument("--api", default=os.getenv("TEST_API_URL", "http://localhost:8000"))
     parser.add_argument("--count", type=int, default=60)
     parser.add_argument("--timeout", type=float, default=180)
+    parser.add_argument("--outage-seconds", type=float, default=25)
     parser.add_argument(
         "--scenario",
         action="append",

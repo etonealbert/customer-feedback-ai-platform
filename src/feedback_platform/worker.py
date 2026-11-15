@@ -12,6 +12,7 @@ from pydantic import ValidationError
 
 from feedback_platform.daemon import daemon_app, serve
 from feedback_platform.db import fetchone, tenant_connection
+from feedback_platform.kafka import close_kafka
 from feedback_platform.metrics import CONSUMER_LAG, PROCESSING, PROCESSING_LAG, WORKER_RESULTS
 from feedback_platform.schemas import Event, Prediction
 from feedback_platform.settings import get_settings
@@ -80,10 +81,13 @@ async def process_event(pool, client, event):
             )
             return "failed"
         try:
-            response = await client.post(
-                settings.inference_url + "/predict",
-                headers={"X-Service-Token": settings.internal_api_key},
-                json={"text": row["text"], "model_version": event.model_version},
+            response = await asyncio.wait_for(
+                client.post(
+                    settings.inference_url + "/predict",
+                    headers={"X-Service-Token": settings.internal_api_key},
+                    json={"text": row["text"], "model_version": event.model_version},
+                ),
+                timeout=10,
             )
             response.raise_for_status()
             result = Prediction.model_validate(response.json())
@@ -92,7 +96,7 @@ async def process_event(pool, client, event):
                 or result.embedding_version != settings.embedding_version
             ):
                 raise ValueError("Inference version mismatch")
-        except (httpx.HTTPError, ValidationError, ValueError) as exc:
+        except (httpx.HTTPError, ValidationError, ValueError, TimeoutError) as exc:
             # Record only the type: provider errors could contain customer text.
             async with tenant_connection(pool, event.tenant_id) as conn:
                 await conn.execute(
@@ -156,6 +160,30 @@ async def process_record(pool, client, record):
     return await process_event(pool, client, event)
 
 
+def poll_budget_ms(settings):
+    backoff = sum(
+        min(10, settings.retry_base_seconds * 2**i) for i in range(settings.max_attempts - 1)
+    )
+    # One record per poll: 10s total HTTP timeout, bounded DB/lock waits, backoff,
+    # and margin for durable failure handling. Heartbeats run independently.
+    return max(300000, int((settings.max_attempts * 40 + backoff + 60) * 1000))
+
+
+async def refresh_lag(consumer, committed_offsets):
+    assigned = consumer.assignment()
+    for partition in set(committed_offsets) - assigned:
+        CONSUMER_LAG.remove(str(partition.partition))
+        committed_offsets.pop(partition)
+    for partition in assigned:
+        if partition not in committed_offsets:
+            committed_offsets[partition] = await consumer.committed(partition) or 0
+        highwater = consumer.highwater(partition)
+        if highwater is not None:
+            CONSUMER_LAG.labels(str(partition.partition)).set(
+                max(0, highwater - committed_offsets[partition])
+            )
+
+
 async def run(app):
     settings = get_settings()
     consumer = AIOKafkaConsumer(
@@ -164,14 +192,15 @@ async def run(app):
         group_id=settings.kafka_group_id,
         enable_auto_commit=False,
         auto_offset_reset="earliest",
-        max_poll_records=10,
-        max_poll_interval_ms=300000,
+        max_poll_records=1,
+        max_poll_interval_ms=poll_budget_ms(settings),
     )
+    committed_offsets = {}
     try:
         await consumer.start()
         async with httpx.AsyncClient(timeout=10) as client:
             while True:
-                batches = await consumer.getmany(timeout_ms=1000, max_records=10)
+                batches = await consumer.getmany(timeout_ms=1000, max_records=1)
                 app.state.last_tick = time.monotonic()
                 for partition, records in batches.items():
                     for record in records:
@@ -182,16 +211,14 @@ async def run(app):
                         await consumer.commit(
                             {TopicPartition(record.topic, record.partition): record.offset + 1}
                         )
+                        committed_offsets[partition] = record.offset + 1
                         WORKER_RESULTS.labels(outcome).inc()
                         app.state.last_tick = time.monotonic()
-                    highwater = consumer.highwater(partition)
-                    committed = await consumer.committed(partition)
-                    if highwater is not None and committed is not None:
-                        CONSUMER_LAG.labels(str(partition.partition)).set(
-                            max(0, highwater - committed)
-                        )
+                await refresh_lag(consumer, committed_offsets)
     finally:
-        await consumer.stop()
+        for partition in committed_offsets:
+            CONSUMER_LAG.remove(str(partition.partition))
+        await close_kafka(consumer)
 
 
 app = daemon_app("worker", run)

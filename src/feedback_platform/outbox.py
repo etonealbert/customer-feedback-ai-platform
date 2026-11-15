@@ -6,6 +6,7 @@ from aiokafka import AIOKafkaProducer
 
 from feedback_platform.daemon import daemon_app, serve
 from feedback_platform.db import fetchall, fetchone
+from feedback_platform.kafka import close_kafka
 from feedback_platform.metrics import OUTBOX_PENDING
 from feedback_platform.settings import get_settings
 
@@ -54,7 +55,7 @@ async def run(app):
             if not count:
                 await asyncio.sleep(0.25)
     finally:
-        await producer.stop()
+        await close_kafka(producer)
 
 
 app = daemon_app("outbox", run)

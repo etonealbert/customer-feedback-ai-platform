@@ -16,7 +16,14 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-dev = ["pytest>=8.3,<10", "pytest-asyncio>=0.25,<2", "ruff>=0.11,<1", "psutil>=6,<8", "pyyaml>=6,<7"]
+dev = [
+    "pytest>=8.3,<10",
+    "pytest-asyncio>=0.25,<2",
+    "ruff>=0.11,<1",
+    "psutil>=6,<8",
+    "pyyaml>=6,<7",
+    "matplotlib>=3.10,<4",
+]
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/feedback_platform"]

@@ -20,7 +20,7 @@ groups:
         annotations:
           summary: Feedback is waiting for Kafka delivery
       - alert: FeedbackConsumerLag
-        expr: sum(feedback_consumer_lag) > 1000
+        expr: sum(max by (partition) (feedback_consumer_lag)) > 1000
         for: 2m
         labels: {severity: warning}
         annotations:

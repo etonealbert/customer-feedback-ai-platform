@@ -16,12 +16,13 @@ ROOT = Path(__file__).resolve().parents[2]
 
 def database():
     return psycopg.connect(
-        host="localhost",
+        host="127.0.0.1",
         port=int(os.getenv("POSTGRES_PORT", "55432")),
         dbname="feedback",
         user="postgres",
         password=os.environ["POSTGRES_PASSWORD"],
         autocommit=True,
+        connect_timeout=5,
     )
 
 

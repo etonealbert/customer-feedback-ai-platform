@@ -133,7 +133,7 @@ services:
       <<: *app-environment
       OPENAI_API_KEY: ${OPENAI_API_KEY:-}
       OPENAI_MODEL: ${OPENAI_MODEL:-}
-      LLM_PROVIDER: ${LLM_PROVIDER:-local}
+      LLM_PROVIDER: ${LLM_PROVIDER:-extractive}
     depends_on:
       migrate: {condition: service_completed_successfully}
       inference: {condition: service_healthy}

@@ -10,7 +10,7 @@ Workers disable Kafka auto-commit. They authenticate to inference, validate the 
 
 Inference failures retry with exponential backoff and a durable per-feedback/version attempt count. After four attempts, the failure status, dead-letter record, and DLQ outbox row are written transactionally before the source offset is committed. A database failure cannot be acknowledged; the supervisor reconnects and consumes from the last committed offset. Invalid event envelopes are dead-lettered with location/size metadata, without copying arbitrary unvalidated content.
 
-The design promises idempotent **database effects**, not global exactly-once execution. Inference may run more than once. Six topic partitions bound active worker parallelism. A slow or failing event temporarily blocks its partition; batch size and bounded inference time keep processing below the consumer poll interval.
+The design promises idempotent **database effects**, not global exactly-once execution. Inference may run more than once. Six topic partitions bound active worker parallelism. A slow or failing event temporarily blocks its partition. Workers fetch one record per poll, bound each HTTP inference attempt to ten seconds total, and size the poll interval above the configured retry budget. Database statement/lock timeouts bound query waits. Kafka client shutdown has a five-second deadline; if flushing cannot finish during broker loss, the service exits so its orchestrator can restart it. Durable rows and offsets remain the recovery boundary.
 
 ## Tenant boundary
 

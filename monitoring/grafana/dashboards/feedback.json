@@ -176,7 +176,7 @@
         {
           "legendFormat": "partition {{partition}}",
           "refId": "A",
-          "expr": "sum by (partition) (feedback_consumer_lag)"
+          "expr": "max by (partition) (feedback_consumer_lag)"
         }
       ],
       "fieldConfig": {
@@ -571,9 +571,9 @@
       "id": 12,
       "targets": [
         {
-          "legendFormat": "p95",
+          "legendFormat": "{{model_version}}",
           "refId": "A",
-          "expr": "histogram_quantile(0.95, sum by (le) (rate(feedback_http_request_duration_seconds_bucket{service=\"inference\",route=\"/predict\"}[5m])))"
+          "expr": "histogram_quantile(0.95, sum by (le, model_version) (rate(feedback_inference_duration_seconds_bucket[5m])))"
         }
       ],
       "fieldConfig": {
@@ -598,7 +598,7 @@
         "type": "prometheus"
       },
       "type": "timeseries",
-      "title": "Inference HTTP p95"
+      "title": "Model inference p95"
     }
   ],
   "timezone": "browser",

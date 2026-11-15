@@ -12,6 +12,7 @@ on:
 
 permissions:
   contents: read
+  actions: read
 
 concurrency:
   group: deploy-staging
@@ -27,7 +28,21 @@ jobs:
       DEPLOY_IMAGE: ghcr.io/${{ github.repository }}
       KUBE_CONFIG_B64: ${{ secrets.KUBE_CONFIG_B64 }}
     steps:
+      - name: Require successful main-branch CI for the requested commit
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          [[ "$DEPLOY_SHA" =~ ^[0-9a-f]{40}$ ]] || { echo 'A full lowercase commit SHA is required'; exit 1; }
+          count=$(gh api --method GET "repos/$GITHUB_REPOSITORY/actions/workflows/ci.yml/runs" \
+            -f head_sha="$DEPLOY_SHA" -f branch=main -f event=push -f status=success \
+            -f per_page=100 --jq '.workflow_runs | length')
+          test "$count" -gt 0 || { echo 'No successful main-branch CI and image publication exists for this SHA'; exit 1; }
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.commit_sha }}
+          persist-credentials: false
       - uses: azure/setup-kubectl@v4
         with:
           version: v1.32.3
@@ -38,7 +53,6 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          [[ "$DEPLOY_SHA" =~ ^[0-9a-f]{40}$ ]] || { echo 'A full lowercase commit SHA is required'; exit 1; }
           test -n "$KUBE_CONFIG_B64" || { echo 'Configure staging KUBE_CONFIG_B64 first'; exit 1; }
           printf '%s' "$KUBE_CONFIG_B64" | base64 --decode > "$RUNNER_TEMP/kubeconfig"
           chmod 600 "$RUNNER_TEMP/kubeconfig"

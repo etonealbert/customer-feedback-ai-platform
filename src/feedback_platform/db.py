@@ -3,6 +3,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
 from psycopg import OperationalError
+from psycopg.errors import LockNotAvailable, QueryCanceled
 from psycopg.rows import dict_row
 from psycopg_pool import AsyncConnectionPool, PoolTimeout
 
@@ -17,7 +18,11 @@ def make_pool():
         max_size=settings.db_pool_size,
         timeout=5,
         open=False,
-        kwargs={"row_factory": dict_row, "connect_timeout": 5},
+        kwargs={
+            "row_factory": dict_row,
+            "connect_timeout": 5,
+            "options": "-c statement_timeout=10000 -c lock_timeout=5000",
+        },
         check=AsyncConnectionPool.check_connection,
     )
 
@@ -48,3 +53,5 @@ def install_database_errors(app: FastAPI):
 
     app.add_exception_handler(OperationalError, unavailable)
     app.add_exception_handler(PoolTimeout, unavailable)
+    app.add_exception_handler(LockNotAvailable, unavailable)
+    app.add_exception_handler(QueryCanceled, unavailable)

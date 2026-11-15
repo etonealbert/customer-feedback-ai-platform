@@ -124,9 +124,10 @@ kubectl -n feedback-ai rollout undo deployment/inference
 kubectl -n feedback-ai rollout status deployment/inference --timeout=120s
 ```
 
-Verify the namespace in [Kubernetes operations](kubernetes.md) before running. A failed
-rollout should keep old ready replicas available when resources and rolling-update policy
-allow. Keep this scenario marked untested until a real cluster run has produced evidence.
+Verify the namespace in [Kubernetes operations](kubernetes.md) before running. The
+[recorded local cluster experiment](evidence/kubernetes-local.json) observed the old
+inference replica staying ready while an invalid replacement failed, followed by a
+successful rollback. This depends on available resources and the configured rolling-update policy.
 
 ## Poison events, failed predictions, and tenant isolation
 

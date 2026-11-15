@@ -10,6 +10,7 @@ from pydantic import ValidationError
 
 from feedback_platform import worker
 from feedback_platform.auth import hash_key
+from feedback_platform.kafka import close_kafka
 from feedback_platform.rag import extractive_answer, llm_answer, valid_citations
 from feedback_platform.schemas import Event, FeedbackIn, Prediction
 from feedback_platform.settings import get_settings
@@ -138,6 +139,9 @@ async def test_worker_acknowledges_only_after_durable_processing(monkeypatch, fa
         def highwater(self, partition):
             return 9
 
+        def assignment(self):
+            return {partition}
+
         async def stop(self):
             actions.append(("stop", None))
 
@@ -165,3 +169,39 @@ def test_event_pins_supported_model_version():
     }
     with pytest.raises(ValidationError):
         Event.model_validate(payload)
+
+
+async def test_stalled_kafka_shutdown_terminates_service_instead_of_hanging():
+    async def stalled():
+        await asyncio.Event().wait()
+
+    with pytest.raises(SystemExit):
+        await close_kafka(SimpleNamespace(stop=stalled), timeout=0.01)
+
+
+def test_poll_budget_exceeds_configured_worst_case_inference_and_backoff():
+    for attempts in (1, 4, 20):
+        settings = SimpleNamespace(max_attempts=attempts, retry_base_seconds=30)
+        budget = worker.poll_budget_ms(settings) / 1000
+        assert budget > attempts * 10 + sum(min(10, 30 * 2**i) for i in range(attempts - 1)) + 60
+
+
+async def test_lag_refresh_removes_revoked_partitions_and_updates_idle_assignment(monkeypatch):
+    old, current = worker.TopicPartition("feedback.v1", 0), worker.TopicPartition("feedback.v1", 1)
+    values = {"0": 99}
+
+    class Gauge:
+        def remove(self, label):
+            values.pop(label, None)
+
+        def labels(self, label):
+            return SimpleNamespace(set=lambda value: values.update({label: value}))
+
+    consumer = SimpleNamespace(
+        assignment=lambda: {current}, highwater=lambda _: 9, committed=AsyncMock(return_value=7)
+    )
+    monkeypatch.setattr(worker, "CONSUMER_LAG", Gauge())
+    offsets = {old: 3}
+    await worker.refresh_lag(consumer, offsets)
+    assert values == {"1": 2}
+    assert offsets == {current: 7}

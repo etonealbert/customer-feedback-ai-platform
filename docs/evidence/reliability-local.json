@@ -1,0 +1,877 @@
+{
+  "schema_version": 1,
+  "started_at_utc": "2026-11-15T00:55:16.750612+00:00",
+  "configuration": {
+    "api": "http://localhost:8000",
+    "count": 60,
+    "timeout": 180,
+    "scenario": null,
+    "output": "docs/evidence/reliability-local.json"
+  },
+  "experiments": [
+    {
+      "scenario": "worker",
+      "started_at_utc": "2026-11-15T00:55:18.831361+00:00",
+      "observations": {
+        "feedback_ids": [
+          "58abc135-e6c8-4839-a444-2a6edd110df1",
+          "48e32d5d-ed3d-4e8d-b471-febcbf8e08ee",
+          "fd0da423-37c2-43bd-a8c2-7a4720e64ede",
+          "209e6bc9-89f4-489e-a91b-933c09f56bc5",
+          "52dc47f3-20cd-431b-bf5d-c59e45548fc9",
+          "df2f01f0-1d67-495c-9c1a-60737573dc92",
+          "14f84584-c7db-4f77-943d-9d70d583df54",
+          "ef610f1e-72fd-4ffe-ae52-db089a9b2f44",
+          "7fd56a14-f7ba-4227-b88e-960e6b42ba13",
+          "20bf0a82-bdb6-4f79-973a-f824d06e0dd1",
+          "c9bae39b-63ce-4fb9-a798-163a3f56c2d3",
+          "ab8ef30b-26f3-448e-bf6c-6c8fa0fe5841",
+          "622dc3f3-9729-4cc5-a6c7-e5d028d9dec4",
+          "1438eec9-c190-4750-8049-f778a34ced0c",
+          "f3e04867-94cc-425c-993e-eb7282b37b2f",
+          "3ad42ad9-ec30-43a8-b2f1-8de38241bfd6",
+          "a91a58ba-82df-4a6c-a2b9-ea9381eade77",
+          "b22433a5-d84a-42bc-bcc4-900f6ab630da",
+          "78666fb7-fe81-4700-a420-64f34df6d3ff",
+          "9959b811-1b24-45dd-8177-1a011dab0dc6",
+          "d385d93e-8ea5-45be-9f14-21971f2c098b",
+          "d9af60c8-d181-4468-979f-4abef8e62b8b",
+          "32139a37-dae5-4ffb-9c2f-57fd1a707333",
+          "813c6589-0f8d-4325-9d49-fd8b14ea6bb3",
+          "357966c5-4af9-4428-a1fa-c1d7d9f8bdd2",
+          "ad2242e8-66e3-490b-bba5-bb0620dad6e2",
+          "8b675931-7d22-41dc-975a-657f071f3612",
+          "7b5a95eb-4dfe-4175-8e6b-18de5a327067",
+          "ce1f5f78-7de9-4810-a612-fad71d93b63b",
+          "587cb272-8d0e-454d-bd05-e0b437f10f7b",
+          "a02b707a-0329-4618-8784-197906fc3faf",
+          "aa6be6a1-2c6e-4837-b3f2-56747a3f2319",
+          "288fc841-46bb-41b0-88cd-6b3eb149c9c4",
+          "39e18231-5541-432f-b46e-651caad8ab1c",
+          "09ce48eb-a49c-48a0-b107-31df469ac59e",
+          "1d000cf0-dab2-4be7-b03b-5904e6c22ec3",
+          "df09f49f-d5a8-43fd-a659-da6de9d5db84",
+          "57cc287f-7fb9-4eb4-9071-0fdbe86a9641",
+          "7d66d9de-ff86-4cd9-813b-91a0bb5eac8f",
+          "71c87a47-be10-4cdc-9e64-f2ebeb408478",
+          "9fd5eb5f-9c69-4e6a-be8a-9023dd92c3df",
+          "a4f403e2-99b4-4086-be6c-327b6cb04ea3",
+          "fb0f9f80-dc8d-4ce8-bcb0-67ec0732e8cd",
+          "83853bb9-6645-4542-ac0a-7d8f21cc0347",
+          "b466bb55-0489-469e-9773-07afaa9fe6c7",
+          "8380c984-9629-467f-bc9a-5d1459bf450a",
+          "dab6c5c7-b04e-4e1d-b6ae-5c3cd4c00ba8",
+          "45e497a9-db1d-427e-926c-7331f7214bc0",
+          "8deb09e7-f49c-470e-8746-faf6d2007de7",
+          "2cfa5ac7-7265-43d6-9c81-7dd8663224ed",
+          "5a58256f-1a01-4154-8bd3-57359fe86377",
+          "ca6881fb-61d6-4e75-b1fc-3c8b013cdbea",
+          "84b40a92-e8c2-47f8-b956-b127a902e6e7",
+          "73484b04-06b0-4a84-bdb8-4446dd4eadb3",
+          "868da33a-1c41-43a5-9fa6-1ec2df2790c6",
+          "165c6aba-7d9d-498d-9dd2-fed17fd7f595",
+          "d274871e-002b-400a-b70d-20c1d008c809",
+          "78c8aa95-f490-45d3-9100-ee25e157fde8",
+          "c999360f-1abd-4919-8d86-64ba4fdc7e55",
+          "f8eec607-6139-4d09-b996-1ee4e52146b8"
+        ],
+        "before": {
+          "58abc135-e6c8-4839-a444-2a6edd110df1": "pending",
+          "48e32d5d-ed3d-4e8d-b471-febcbf8e08ee": "pending",
+          "fd0da423-37c2-43bd-a8c2-7a4720e64ede": "pending",
+          "209e6bc9-89f4-489e-a91b-933c09f56bc5": "pending",
+          "52dc47f3-20cd-431b-bf5d-c59e45548fc9": "pending",
+          "df2f01f0-1d67-495c-9c1a-60737573dc92": "pending",
+          "14f84584-c7db-4f77-943d-9d70d583df54": "pending",
+          "ef610f1e-72fd-4ffe-ae52-db089a9b2f44": "pending",
+          "7fd56a14-f7ba-4227-b88e-960e6b42ba13": "pending",
+          "20bf0a82-bdb6-4f79-973a-f824d06e0dd1": "pending",
+          "c9bae39b-63ce-4fb9-a798-163a3f56c2d3": "pending",
+          "ab8ef30b-26f3-448e-bf6c-6c8fa0fe5841": "pending",
+          "622dc3f3-9729-4cc5-a6c7-e5d028d9dec4": "pending",
+          "1438eec9-c190-4750-8049-f778a34ced0c": "pending",
+          "f3e04867-94cc-425c-993e-eb7282b37b2f": "pending",
+          "3ad42ad9-ec30-43a8-b2f1-8de38241bfd6": "pending",
+          "a91a58ba-82df-4a6c-a2b9-ea9381eade77": "pending",
+          "b22433a5-d84a-42bc-bcc4-900f6ab630da": "pending",
+          "78666fb7-fe81-4700-a420-64f34df6d3ff": "pending",
+          "9959b811-1b24-45dd-8177-1a011dab0dc6": "pending",
+          "d385d93e-8ea5-45be-9f14-21971f2c098b": "pending",
+          "d9af60c8-d181-4468-979f-4abef8e62b8b": "pending",
+          "32139a37-dae5-4ffb-9c2f-57fd1a707333": "pending",
+          "813c6589-0f8d-4325-9d49-fd8b14ea6bb3": "pending",
+          "357966c5-4af9-4428-a1fa-c1d7d9f8bdd2": "pending",
+          "ad2242e8-66e3-490b-bba5-bb0620dad6e2": "pending",
+          "8b675931-7d22-41dc-975a-657f071f3612": "pending",
+          "7b5a95eb-4dfe-4175-8e6b-18de5a327067": "pending",
+          "ce1f5f78-7de9-4810-a612-fad71d93b63b": "pending",
+          "587cb272-8d0e-454d-bd05-e0b437f10f7b": "pending",
+          "a02b707a-0329-4618-8784-197906fc3faf": "pending",
+          "aa6be6a1-2c6e-4837-b3f2-56747a3f2319": "pending",
+          "288fc841-46bb-41b0-88cd-6b3eb149c9c4": "pending",
+          "39e18231-5541-432f-b46e-651caad8ab1c": "pending",
+          "09ce48eb-a49c-48a0-b107-31df469ac59e": "pending",
+          "1d000cf0-dab2-4be7-b03b-5904e6c22ec3": "pending",
+          "df09f49f-d5a8-43fd-a659-da6de9d5db84": "pending",
+          "57cc287f-7fb9-4eb4-9071-0fdbe86a9641": "pending",
+          "7d66d9de-ff86-4cd9-813b-91a0bb5eac8f": "pending",
+          "71c87a47-be10-4cdc-9e64-f2ebeb408478": "pending",
+          "9fd5eb5f-9c69-4e6a-be8a-9023dd92c3df": "pending",
+          "a4f403e2-99b4-4086-be6c-327b6cb04ea3": "pending",
+          "fb0f9f80-dc8d-4ce8-bcb0-67ec0732e8cd": "pending",
+          "83853bb9-6645-4542-ac0a-7d8f21cc0347": "pending",
+          "b466bb55-0489-469e-9773-07afaa9fe6c7": "pending",
+          "8380c984-9629-467f-bc9a-5d1459bf450a": "pending",
+          "dab6c5c7-b04e-4e1d-b6ae-5c3cd4c00ba8": "pending",
+          "45e497a9-db1d-427e-926c-7331f7214bc0": "pending",
+          "8deb09e7-f49c-470e-8746-faf6d2007de7": "pending",
+          "2cfa5ac7-7265-43d6-9c81-7dd8663224ed": "pending",
+          "5a58256f-1a01-4154-8bd3-57359fe86377": "pending",
+          "ca6881fb-61d6-4e75-b1fc-3c8b013cdbea": "pending",
+          "84b40a92-e8c2-47f8-b956-b127a902e6e7": "pending",
+          "73484b04-06b0-4a84-bdb8-4446dd4eadb3": "pending",
+          "868da33a-1c41-43a5-9fa6-1ec2df2790c6": "pending",
+          "165c6aba-7d9d-498d-9dd2-fed17fd7f595": "pending",
+          "d274871e-002b-400a-b70d-20c1d008c809": "pending",
+          "78c8aa95-f490-45d3-9100-ee25e157fde8": "pending",
+          "c999360f-1abd-4919-8d86-64ba4fdc7e55": "pending",
+          "f8eec607-6139-4d09-b996-1ee4e52146b8": "pending"
+        },
+        "after_kill": {
+          "58abc135-e6c8-4839-a444-2a6edd110df1": "pending",
+          "48e32d5d-ed3d-4e8d-b471-febcbf8e08ee": "pending",
+          "fd0da423-37c2-43bd-a8c2-7a4720e64ede": "pending",
+          "209e6bc9-89f4-489e-a91b-933c09f56bc5": "pending",
+          "52dc47f3-20cd-431b-bf5d-c59e45548fc9": "pending",
+          "df2f01f0-1d67-495c-9c1a-60737573dc92": "pending",
+          "14f84584-c7db-4f77-943d-9d70d583df54": "pending",
+          "ef610f1e-72fd-4ffe-ae52-db089a9b2f44": "pending",
+          "7fd56a14-f7ba-4227-b88e-960e6b42ba13": "pending",
+          "20bf0a82-bdb6-4f79-973a-f824d06e0dd1": "pending",
+          "c9bae39b-63ce-4fb9-a798-163a3f56c2d3": "pending",
+          "ab8ef30b-26f3-448e-bf6c-6c8fa0fe5841": "pending",
+          "622dc3f3-9729-4cc5-a6c7-e5d028d9dec4": "pending",
+          "1438eec9-c190-4750-8049-f778a34ced0c": "pending",
+          "f3e04867-94cc-425c-993e-eb7282b37b2f": "pending",
+          "3ad42ad9-ec30-43a8-b2f1-8de38241bfd6": "pending",
+          "a91a58ba-82df-4a6c-a2b9-ea9381eade77": "pending",
+          "b22433a5-d84a-42bc-bcc4-900f6ab630da": "pending",
+          "78666fb7-fe81-4700-a420-64f34df6d3ff": "pending",
+          "9959b811-1b24-45dd-8177-1a011dab0dc6": "pending",
+          "d385d93e-8ea5-45be-9f14-21971f2c098b": "pending",
+          "d9af60c8-d181-4468-979f-4abef8e62b8b": "pending",
+          "32139a37-dae5-4ffb-9c2f-57fd1a707333": "pending",
+          "813c6589-0f8d-4325-9d49-fd8b14ea6bb3": "pending",
+          "357966c5-4af9-4428-a1fa-c1d7d9f8bdd2": "pending",
+          "ad2242e8-66e3-490b-bba5-bb0620dad6e2": "pending",
+          "8b675931-7d22-41dc-975a-657f071f3612": "pending",
+          "7b5a95eb-4dfe-4175-8e6b-18de5a327067": "pending",
+          "ce1f5f78-7de9-4810-a612-fad71d93b63b": "pending",
+          "587cb272-8d0e-454d-bd05-e0b437f10f7b": "pending",
+          "a02b707a-0329-4618-8784-197906fc3faf": "pending",
+          "aa6be6a1-2c6e-4837-b3f2-56747a3f2319": "pending",
+          "288fc841-46bb-41b0-88cd-6b3eb149c9c4": "pending",
+          "39e18231-5541-432f-b46e-651caad8ab1c": "pending",
+          "09ce48eb-a49c-48a0-b107-31df469ac59e": "pending",
+          "1d000cf0-dab2-4be7-b03b-5904e6c22ec3": "pending",
+          "df09f49f-d5a8-43fd-a659-da6de9d5db84": "pending",
+          "57cc287f-7fb9-4eb4-9071-0fdbe86a9641": "pending",
+          "7d66d9de-ff86-4cd9-813b-91a0bb5eac8f": "pending",
+          "71c87a47-be10-4cdc-9e64-f2ebeb408478": "pending",
+          "9fd5eb5f-9c69-4e6a-be8a-9023dd92c3df": "pending",
+          "a4f403e2-99b4-4086-be6c-327b6cb04ea3": "pending",
+          "fb0f9f80-dc8d-4ce8-bcb0-67ec0732e8cd": "pending",
+          "83853bb9-6645-4542-ac0a-7d8f21cc0347": "pending",
+          "b466bb55-0489-469e-9773-07afaa9fe6c7": "pending",
+          "8380c984-9629-467f-bc9a-5d1459bf450a": "pending",
+          "dab6c5c7-b04e-4e1d-b6ae-5c3cd4c00ba8": "pending",
+          "45e497a9-db1d-427e-926c-7331f7214bc0": "pending",
+          "8deb09e7-f49c-470e-8746-faf6d2007de7": "pending",
+          "2cfa5ac7-7265-43d6-9c81-7dd8663224ed": "pending",
+          "5a58256f-1a01-4154-8bd3-57359fe86377": "pending",
+          "ca6881fb-61d6-4e75-b1fc-3c8b013cdbea": "pending",
+          "84b40a92-e8c2-47f8-b956-b127a902e6e7": "pending",
+          "73484b04-06b0-4a84-bdb8-4446dd4eadb3": "pending",
+          "868da33a-1c41-43a5-9fa6-1ec2df2790c6": "pending",
+          "165c6aba-7d9d-498d-9dd2-fed17fd7f595": "pending",
+          "d274871e-002b-400a-b70d-20c1d008c809": "pending",
+          "78c8aa95-f490-45d3-9100-ee25e157fde8": "pending",
+          "c999360f-1abd-4919-8d86-64ba4fdc7e55": "pending",
+          "f8eec607-6139-4d09-b996-1ee4e52146b8": "pending"
+        },
+        "completed": 60,
+        "audit": {
+          "feedback_rows": 60,
+          "completed_rows": 60,
+          "prediction_rows": 60,
+          "duplicate_predictions": 0
+        },
+        "limitation": "Timing-based SIGKILL does not prove a specific crash occurred between DB commit and Kafka offset commit; idempotency is also covered by deterministic tests."
+      },
+      "passed": true,
+      "elapsed_seconds": 18.889999999955762
+    },
+    {
+      "scenario": "kafka",
+      "started_at_utc": "2026-11-15T00:55:37.719536+00:00",
+      "observations": {
+        "feedback_ids": [
+          "2ac89435-67e9-4966-bd28-0989f7c17360",
+          "c4628dfd-72d5-4b3c-9002-4f3b9bc329de",
+          "e571996b-0a02-4d8f-b53b-fc8857c9f6af",
+          "07d61def-21e0-4980-b988-8aeeecc437e4",
+          "f910c78c-5228-4003-935e-daac40aee202",
+          "675fbaa1-fe9d-4420-9eb0-4d8077eca158",
+          "f8fe4579-4aaa-4908-a96e-3981e6350ba7",
+          "ce5c08f3-79c8-4b45-a15f-0110df1e83fd",
+          "a27a9d56-9954-4f62-be4c-f011171859a1",
+          "63cfbf94-f27d-4da6-ac46-1c0e7260a2c0",
+          "9a6b6eb6-afa9-48eb-bc2a-6a019acfbbf6",
+          "9679c3c7-0039-4087-befc-d6428d3015c5",
+          "690081ad-166d-4187-adb1-c8c6dc43492b",
+          "7b8e5901-24a3-4580-8063-3576bd79e2d0",
+          "b9e0c99e-bb40-4aac-8558-d7ba6d219c16",
+          "2febd671-294b-40c9-86b8-301cf817641a",
+          "0e3b54d0-ee02-41ab-9a69-1edcdd84c0e9",
+          "b818e928-8972-498e-80ba-78628ae5fbda",
+          "e6106a69-c3eb-4bee-a6a3-ae9417fab58c",
+          "bd5e0e23-b486-441d-9567-84516decdd0f",
+          "fd9195ed-ad52-44da-ba28-6d95a084f80c",
+          "4fce5b1e-7a12-40c4-ac77-f5820bd6ebfc",
+          "566a7697-3784-46c5-9a51-af2cc7aeb159",
+          "79e27328-3ca6-4932-be97-005a07073675",
+          "0afbce0e-c75a-48fe-a073-2d05679b82d4",
+          "c2b6b89f-013d-45f9-8116-26b73a780e26",
+          "ffea8509-b32e-406f-bf08-44dade116dbd",
+          "ccfa9676-e556-4496-9987-0b0d457728b8",
+          "85ca6757-965c-4cd2-8d5c-c2eda6a4ca5d",
+          "da55863a-707f-465f-ae0e-df547e2454df",
+          "47b98775-4868-4aa4-a741-2f63309d3522",
+          "3175cd20-eebb-404a-8bbd-3d8e0d9fc564",
+          "269e8ff0-96c3-4359-9bdf-7e1b28bcfa91",
+          "d34386a1-1105-4105-b645-129b4e97e41c",
+          "3003cf15-2fd6-4fd2-8b74-4c3ddd2359ee",
+          "7a9ab897-1b23-4062-9da9-a92de374058f",
+          "0d60a16d-c291-4e8f-813f-ffce3a3e9bbe",
+          "a42a8968-3461-4a8f-a4c4-d18fa4ed0f8b",
+          "d04e18f4-0332-4f34-a394-6ad82dcbdbc9",
+          "2f627a96-965d-4a95-9bc5-15224b44407c",
+          "94f533f4-3caa-4b66-b822-a51e5d9d849f",
+          "edfee8b8-5a27-4527-b202-59214c05321e",
+          "e91771c7-5825-4b45-a6e9-9b33c26183ba",
+          "4ce0989b-8cdf-4a09-af63-c222f49d2eb4",
+          "f4839859-de85-4394-988e-3aafde2cffe4",
+          "3d19b21e-099b-4c87-ad2d-d1cc6bdb1c47",
+          "8bc4ccb7-3ab6-4272-a420-fe60c0cfa050",
+          "a7c13889-2fcc-4975-b5ca-302e9fe0ccd6",
+          "32490930-6ca1-4431-b49f-a77a1d8d1eac",
+          "fd191e17-fd2f-4742-abb6-253046166fdb",
+          "6b4d3fe3-f395-40f0-affc-b8c56fc7c2a3",
+          "e9bb3f5f-8ab8-46ec-b4d4-ba6e0218170f",
+          "a0ce27fc-ba7f-4692-b0b9-e1361d2c7c95",
+          "ea544fcb-4bd2-4ea0-851a-bd5ecd785526",
+          "04f79065-5ca7-44f2-9028-4c8375cc2196",
+          "cc2483ec-8785-42d4-a8e9-7c789e36baa8",
+          "4ebea0c6-53b6-4314-8373-f37a8c707bb8",
+          "3740ceea-c9a3-4d57-a721-7cc05dc6e43f",
+          "98bbe187-c710-4bed-842f-67263101459d",
+          "a2d1dc55-4c06-4cc5-9b1f-bb4524bb4492"
+        ],
+        "accepted_during_outage": 60,
+        "before_recovery": {
+          "2ac89435-67e9-4966-bd28-0989f7c17360": "pending",
+          "c4628dfd-72d5-4b3c-9002-4f3b9bc329de": "pending",
+          "e571996b-0a02-4d8f-b53b-fc8857c9f6af": "pending",
+          "07d61def-21e0-4980-b988-8aeeecc437e4": "pending",
+          "f910c78c-5228-4003-935e-daac40aee202": "pending",
+          "675fbaa1-fe9d-4420-9eb0-4d8077eca158": "pending",
+          "f8fe4579-4aaa-4908-a96e-3981e6350ba7": "pending",
+          "ce5c08f3-79c8-4b45-a15f-0110df1e83fd": "pending",
+          "a27a9d56-9954-4f62-be4c-f011171859a1": "pending",
+          "63cfbf94-f27d-4da6-ac46-1c0e7260a2c0": "pending",
+          "9a6b6eb6-afa9-48eb-bc2a-6a019acfbbf6": "pending",
+          "9679c3c7-0039-4087-befc-d6428d3015c5": "pending",
+          "690081ad-166d-4187-adb1-c8c6dc43492b": "pending",
+          "7b8e5901-24a3-4580-8063-3576bd79e2d0": "pending",
+          "b9e0c99e-bb40-4aac-8558-d7ba6d219c16": "pending",
+          "2febd671-294b-40c9-86b8-301cf817641a": "pending",
+          "0e3b54d0-ee02-41ab-9a69-1edcdd84c0e9": "pending",
+          "b818e928-8972-498e-80ba-78628ae5fbda": "pending",
+          "e6106a69-c3eb-4bee-a6a3-ae9417fab58c": "pending",
+          "bd5e0e23-b486-441d-9567-84516decdd0f": "pending",
+          "fd9195ed-ad52-44da-ba28-6d95a084f80c": "pending",
+          "4fce5b1e-7a12-40c4-ac77-f5820bd6ebfc": "pending",
+          "566a7697-3784-46c5-9a51-af2cc7aeb159": "pending",
+          "79e27328-3ca6-4932-be97-005a07073675": "pending",
+          "0afbce0e-c75a-48fe-a073-2d05679b82d4": "pending",
+          "c2b6b89f-013d-45f9-8116-26b73a780e26": "pending",
+          "ffea8509-b32e-406f-bf08-44dade116dbd": "pending",
+          "ccfa9676-e556-4496-9987-0b0d457728b8": "pending",
+          "85ca6757-965c-4cd2-8d5c-c2eda6a4ca5d": "pending",
+          "da55863a-707f-465f-ae0e-df547e2454df": "pending",
+          "47b98775-4868-4aa4-a741-2f63309d3522": "pending",
+          "3175cd20-eebb-404a-8bbd-3d8e0d9fc564": "pending",
+          "269e8ff0-96c3-4359-9bdf-7e1b28bcfa91": "pending",
+          "d34386a1-1105-4105-b645-129b4e97e41c": "pending",
+          "3003cf15-2fd6-4fd2-8b74-4c3ddd2359ee": "pending",
+          "7a9ab897-1b23-4062-9da9-a92de374058f": "pending",
+          "0d60a16d-c291-4e8f-813f-ffce3a3e9bbe": "pending",
+          "a42a8968-3461-4a8f-a4c4-d18fa4ed0f8b": "pending",
+          "d04e18f4-0332-4f34-a394-6ad82dcbdbc9": "pending",
+          "2f627a96-965d-4a95-9bc5-15224b44407c": "pending",
+          "94f533f4-3caa-4b66-b822-a51e5d9d849f": "pending",
+          "edfee8b8-5a27-4527-b202-59214c05321e": "pending",
+          "e91771c7-5825-4b45-a6e9-9b33c26183ba": "pending",
+          "4ce0989b-8cdf-4a09-af63-c222f49d2eb4": "pending",
+          "f4839859-de85-4394-988e-3aafde2cffe4": "pending",
+          "3d19b21e-099b-4c87-ad2d-d1cc6bdb1c47": "pending",
+          "8bc4ccb7-3ab6-4272-a420-fe60c0cfa050": "pending",
+          "a7c13889-2fcc-4975-b5ca-302e9fe0ccd6": "pending",
+          "32490930-6ca1-4431-b49f-a77a1d8d1eac": "pending",
+          "fd191e17-fd2f-4742-abb6-253046166fdb": "pending",
+          "6b4d3fe3-f395-40f0-affc-b8c56fc7c2a3": "pending",
+          "e9bb3f5f-8ab8-46ec-b4d4-ba6e0218170f": "pending",
+          "a0ce27fc-ba7f-4692-b0b9-e1361d2c7c95": "pending",
+          "ea544fcb-4bd2-4ea0-851a-bd5ecd785526": "pending",
+          "04f79065-5ca7-44f2-9028-4c8375cc2196": "pending",
+          "cc2483ec-8785-42d4-a8e9-7c789e36baa8": "pending",
+          "4ebea0c6-53b6-4314-8373-f37a8c707bb8": "pending",
+          "3740ceea-c9a3-4d57-a721-7cc05dc6e43f": "pending",
+          "98bbe187-c710-4bed-842f-67263101459d": "pending",
+          "a2d1dc55-4c06-4cc5-9b1f-bb4524bb4492": "pending"
+        },
+        "completed": 60,
+        "audit": {
+          "feedback_rows": 60,
+          "completed_rows": 60,
+          "prediction_rows": 60,
+          "duplicate_predictions": 0
+        }
+      },
+      "passed": true,
+      "elapsed_seconds": 9.26600000000326
+    },
+    {
+      "scenario": "database",
+      "started_at_utc": "2026-11-15T00:55:46.981547+00:00",
+      "observations": {
+        "ingestion_during_outage_http_status": 503,
+        "readiness_during_outage_http_status": 503,
+        "completed_after_recovery": 3,
+        "feedback_ids": [
+          "695a8d57-aee4-43a0-aaef-44f934886f97",
+          "5e72f264-dc1c-4066-a250-b0edfb3ecac8",
+          "d024c510-100d-4af3-b4b4-24915329e7a1"
+        ],
+        "audit": {
+          "feedback_rows": 3,
+          "completed_rows": 3,
+          "prediction_rows": 3,
+          "duplicate_predictions": 0
+        }
+      },
+      "passed": true,
+      "elapsed_seconds": 16.98399999999674
+    },
+    {
+      "scenario": "unhealthy-model",
+      "started_at_utc": "2026-11-15T00:56:03.968817+00:00",
+      "observations": {
+        "invalid_model": "definitely-invalid",
+        "readiness_probe_exit_code": 1,
+        "unhealthy_logs": "inference-1  | INFO:     Started server process [7]\ninference-1  | INFO:     Waiting for application startup.\ninference-1  | ERROR:    Traceback (most recent call last):\ninference-1  |   File \"/app/.venv/lib/python3.12/site-packages/starlette/routing.py\", line 661, in lifespan\ninference-1  |     async with self.lifespan_context(app) as maybe_state:\ninference-1  |                ^^^^^^^^^^^^^^^^^^^^^^^^^^\ninference-1  |   File \"/usr/local/lib/python3.12/contextlib.py\", line 210, in __aenter__\ninference-1  |     return await anext(self.gen)\ninference-1  |            ^^^^^^^^^^^^^^^^^^^^^\ninference-1  |   File \"/app/.venv/lib/python3.12/site-packages/feedback_platform/inference.py\", line 61, in lifespan\ninference-1  |     registry.require_version(get_settings().model_version)\ninference-1  |   File \"/app/.venv/lib/python3.12/site-packages/feedback_platform/ml.py\", line 106, in require_version\ninference-1  |     raise ValueError(\ninference-1  | ValueError: Unknown model version: definitely-invalid. Available: v1, v2\ninference-1  | \ninference-1  | ERROR:    Application startup failed. Exiting.\n",
+        "feedback_ids": [
+          "56789fdc-5a89-4ac7-9cd6-042edbb60650",
+          "071dffd7-b8d0-439d-b6b0-ba73a9ab0d54",
+          "32a9aaa8-4571-489d-af8c-290d30be9bd1"
+        ],
+        "pending_while_unhealthy": {
+          "56789fdc-5a89-4ac7-9cd6-042edbb60650": "pending",
+          "071dffd7-b8d0-439d-b6b0-ba73a9ab0d54": "pending",
+          "32a9aaa8-4571-489d-af8c-290d30be9bd1": "pending"
+        },
+        "completed_after_rollback": 3,
+        "audit": {
+          "feedback_rows": 3,
+          "completed_rows": 3,
+          "prediction_rows": 3,
+          "duplicate_predictions": 0
+        },
+        "limitation": "Compose replacement experiment with workers paused; Kubernetes rolling-update availability is a separate runbook exercise."
+      },
+      "passed": true,
+      "elapsed_seconds": 26.485000000044238
+    },
+    {
+      "scenario": "model-rollout",
+      "started_at_utc": "2026-11-15T00:56:30.446364+00:00",
+      "observations": {
+        "feedback_ids": [
+          "1c110962-dbb8-4c30-bbcb-14f4c6f82695"
+        ],
+        "predictions_by_version": {
+          "v1": {
+            "sentiment": "negative",
+            "confidence": 0.6236894381459543,
+            "topics": [
+              "reliability"
+            ],
+            "model_version": "v1",
+            "embedding_version": "lsa-v1",
+            "inference_ms": 2.837424999597715,
+            "created_at": "2026-11-15T00:56:30.663608+00:00"
+          },
+          "v2": {
+            "sentiment": "negative",
+            "confidence": 0.6986974970051137,
+            "topics": [
+              "reliability"
+            ],
+            "model_version": "v2",
+            "embedding_version": "lsa-v1",
+            "inference_ms": 2.9906890013080556,
+            "created_at": "2026-11-15T00:56:30.935227+00:00"
+          }
+        },
+        "history": [
+          {
+            "sentiment": "negative",
+            "confidence": 0.6236894381459543,
+            "topics": [
+              "reliability"
+            ],
+            "model_version": "v1",
+            "embedding_version": "lsa-v1",
+            "inference_ms": 2.837424999597715,
+            "created_at": "2026-11-15T00:56:30.663608+00:00"
+          },
+          {
+            "sentiment": "negative",
+            "confidence": 0.6986974970051137,
+            "topics": [
+              "reliability"
+            ],
+            "model_version": "v2",
+            "embedding_version": "lsa-v1",
+            "inference_ms": 2.9906890013080556,
+            "created_at": "2026-11-15T00:56:30.935227+00:00"
+          }
+        ],
+        "active_model_after_rollback": "v1",
+        "audit": {
+          "feedback_rows": 1,
+          "completed_rows": 1,
+          "prediction_rows": 2,
+          "duplicate_predictions": 0
+        }
+      },
+      "passed": true,
+      "elapsed_seconds": 0.9219999999622814
+    }
+  ],
+  "scope": "Only the Compose project defined by this repository; existing data is retained",
+  "commands": [
+    {
+      "args": [
+        "stop",
+        "-t",
+        "5",
+        "worker"
+      ],
+      "override": false,
+      "returncode": 0,
+      "elapsed_seconds": 0.6869999999762513,
+      "stdout": "",
+      "stderr": " Container feedback-ai-worker-1  Stopping\n Container feedback-ai-worker-1  Stopped\n"
+    },
+    {
+      "args": [
+        "start",
+        "worker"
+      ],
+      "override": false,
+      "returncode": 0,
+      "elapsed_seconds": 3.735000000044238,
+      "stdout": "",
+      "stderr": " Container feedback-ai-postgres-1  Waiting\n Container feedback-ai-kafka-1  Waiting\n Container feedback-ai-kafka-1  Healthy\n Container feedback-ai-postgres-1  Healthy\n Container feedback-ai-kafka-init-1  Starting\n Container feedback-ai-migrate-1  Starting\n Container feedback-ai-migrate-1  Started\n Container feedback-ai-kafka-init-1  Started\n Container feedback-ai-inference-1  Waiting\n Container feedback-ai-migrate-1  Waiting\n Container feedback-ai-kafka-init-1  Waiting\n Container feedback-ai-inference-1  Healthy\n Container feedback-ai-migrate-1  Exited\n Container feedback-ai-kafka-init-1  Exited\n Container feedback-ai-worker-1  Starting\n Container feedback-ai-worker-1  Started\n"
+    },
+    {
+      "args": [
+        "kill",
+        "-s",
+        "SIGKILL",
+        "worker"
+      ],
+      "override": false,
+      "returncode": 0,
+      "elapsed_seconds": 0.34399999998277053,
+      "stdout": "",
+      "stderr": " Container feedback-ai-worker-1  Killing\n Container feedback-ai-worker-1  Killed\n"
+    },
+    {
+      "args": [
+        "start",
+        "worker"
+      ],
+      "override": false,
+      "returncode": 0,
+      "elapsed_seconds": 3.9070000000065193,
+      "stdout": "",
+      "stderr": " Container feedback-ai-kafka-1  Waiting\n Container feedback-ai-postgres-1  Waiting\n Container feedback-ai-kafka-1  Healthy\n Container feedback-ai-kafka-init-1  Starting\n Container feedback-ai-postgres-1  Healthy\n Container feedback-ai-migrate-1  Starting\n Container feedback-ai-migrate-1  Started\n Container feedback-ai-kafka-init-1  Started\n Container feedback-ai-inference-1  Waiting\n Container feedback-ai-migrate-1  Waiting\n Container feedback-ai-kafka-init-1  Waiting\n Container feedback-ai-inference-1  Healthy\n Container feedback-ai-migrate-1  Exited\n Container feedback-ai-kafka-init-1  Exited\n Container feedback-ai-worker-1  Starting\n Container feedback-ai-worker-1  Started\n"
+    },
+    {
+      "args": [
+        "exec",
+        "-T",
+        "postgres",
+        "psql",
+        "-X",
+        "-A",
+        "-t",
+        "-U",
+        "postgres",
+        "-d",
+        "feedback",
+        "-c",
+        "\n            SELECT json_build_object(\n              'feedback_rows', (SELECT count(*) FROM feedback WHERE id IN ('58abc135-e6c8-4839-a444-2a6edd110df1'::uuid,'48e32d5d-ed3d-4e8d-b471-febcbf8e08ee'::uuid,'fd0da423-37c2-43bd-a8c2-7a4720e64ede'::uuid,'209e6bc9-89f4-489e-a91b-933c09f56bc5'::uuid,'52dc47f3-20cd-431b-bf5d-c59e45548fc9'::uuid,'df2f01f0-1d67-495c-9c1a-60737573dc92'::uuid,'14f84584-c7db-4f77-943d-9d70d583df54'::uuid,'ef610f1e-72fd-4ffe-ae52-db089a9b2f44'::uuid,'7fd56a14-f7ba-4227-b88e-960e6b42ba13'::uuid,'20bf0a82-bdb6-4f79-973a-f824d06e0dd1'::uuid,'c9bae39b-63ce-4fb9-a798-163a3f56c2d3'::uuid,'ab8ef30b-26f3-448e-bf6c-6c8fa0fe5841'::uuid,'622dc3f3-9729-4cc5-a6c7-e5d028d9dec4'::uuid,'1438eec9-c190-4750-8049-f778a34ced0c'::uuid,'f3e04867-94cc-425c-993e-eb7282b37b2f'::uuid,'3ad42ad9-ec30-43a8-b2f1-8de38241bfd6'::uuid,'a91a58ba-82df-4a6c-a2b9-ea9381eade77'::uuid,'b22433a5-d84a-42bc-bcc4-900f6ab630da'::uuid,'78666fb7-fe81-4700-a420-64f34df6d3ff'::uuid,'9959b811-1b24-45dd-8177-1a011dab0dc6'::uuid,'d385d93e-8ea5-45be-9f14-21971f2c098b'::uuid,'d9af60c8-d181-4468-979f-4abef8e62b8b'::uuid,'32139a37-dae5-4ffb-9c2f-57fd1a707333'::uuid,'813c6589-0f8d-4325-9d49-fd8b14ea6bb3'::uuid,'357966c5-4af9-4428-a1fa-c1d7d9f8bdd2'::uuid,'ad2242e8-66e3-490b-bba5-bb0620dad6e2'::uuid,'8b675931-7d22-41dc-975a-657f071f3612'::uuid,'7b5a95eb-4dfe-4175-8e6b-18de5a327067'::uuid,'ce1f5f78-7de9-4810-a612-fad71d93b63b'::uuid,'587cb272-8d0e-454d-bd05-e0b437f10f7b'::uuid,'a02b707a-0329-4618-8784-197906fc3faf'::uuid,'aa6be6a1-2c6e-4837-b3f2-56747a3f2319'::uuid,'288fc841-46bb-41b0-88cd-6b3eb149c9c4'::uuid,'39e18231-5541-432f-b46e-651caad8ab1c'::uuid,'09ce48eb-a49c-48a0-b107-31df469ac59e'::uuid,'1d000cf0-dab2-4be7-b03b-5904e6c22ec3'::uuid,'df09f49f-d5a8-43fd-a659-da6de9d5db84'::uuid,'57cc287f-7fb9-4eb4-9071-0fdbe86a9641'::uuid,'7d66d9de-ff86-4cd9-813b-91a0bb5eac8f'::uuid,'71c87a47-be10-4cdc-9e64-f2ebeb408478'::uuid,'9fd5eb5f-9c69-4e6a-be8a-9023dd92c3df'::uuid,'a4f403e2-99b4-4086-be6c-327b6cb04ea3'::uuid,'fb0f9f80-dc8d-4ce8-bcb0-67ec0732e8cd'::uuid,'83853bb9-6645-4542-ac0a-7d8f21cc0347'::uuid,'b466bb55-0489-469e-9773-07afaa9fe6c7'::uuid,'8380c984-9629-467f-bc9a-5d1459bf450a'::uuid,'dab6c5c7-b04e-4e1d-b6ae-5c3cd4c00ba8'::uuid,'45e497a9-db1d-427e-926c-7331f7214bc0'::uuid,'8deb09e7-f49c-470e-8746-faf6d2007de7'::uuid,'2cfa5ac7-7265-43d6-9c81-7dd8663224ed'::uuid,'5a58256f-1a01-4154-8bd3-57359fe86377'::uuid,'ca6881fb-61d6-4e75-b1fc-3c8b013cdbea'::uuid,'84b40a92-e8c2-47f8-b956-b127a902e6e7'::uuid,'73484b04-06b0-4a84-bdb8-4446dd4eadb3'::uuid,'868da33a-1c41-43a5-9fa6-1ec2df2790c6'::uuid,'165c6aba-7d9d-498d-9dd2-fed17fd7f595'::uuid,'d274871e-002b-400a-b70d-20c1d008c809'::uuid,'78c8aa95-f490-45d3-9100-ee25e157fde8'::uuid,'c999360f-1abd-4919-8d86-64ba4fdc7e55'::uuid,'f8eec607-6139-4d09-b996-1ee4e52146b8'::uuid)),\n              'completed_rows', (SELECT count(*) FROM feedback WHERE id IN ('58abc135-e6c8-4839-a444-2a6edd110df1'::uuid,'48e32d5d-ed3d-4e8d-b471-febcbf8e08ee'::uuid,'fd0da423-37c2-43bd-a8c2-7a4720e64ede'::uuid,'209e6bc9-89f4-489e-a91b-933c09f56bc5'::uuid,'52dc47f3-20cd-431b-bf5d-c59e45548fc9'::uuid,'df2f01f0-1d67-495c-9c1a-60737573dc92'::uuid,'14f84584-c7db-4f77-943d-9d70d583df54'::uuid,'ef610f1e-72fd-4ffe-ae52-db089a9b2f44'::uuid,'7fd56a14-f7ba-4227-b88e-960e6b42ba13'::uuid,'20bf0a82-bdb6-4f79-973a-f824d06e0dd1'::uuid,'c9bae39b-63ce-4fb9-a798-163a3f56c2d3'::uuid,'ab8ef30b-26f3-448e-bf6c-6c8fa0fe5841'::uuid,'622dc3f3-9729-4cc5-a6c7-e5d028d9dec4'::uuid,'1438eec9-c190-4750-8049-f778a34ced0c'::uuid,'f3e04867-94cc-425c-993e-eb7282b37b2f'::uuid,'3ad42ad9-ec30-43a8-b2f1-8de38241bfd6'::uuid,'a91a58ba-82df-4a6c-a2b9-ea9381eade77'::uuid,'b22433a5-d84a-42bc-bcc4-900f6ab630da'::uuid,'78666fb7-fe81-4700-a420-64f34df6d3ff'::uuid,'9959b811-1b24-45dd-8177-1a011dab0dc6'::uuid,'d385d93e-8ea5-45be-9f14-21971f2c098b'::uuid,'d9af60c8-d181-4468-979f-4abef8e62b8b'::uuid,'32139a37-dae5-4ffb-9c2f-57fd1a707333'::uuid,'813c6589-0f8d-4325-9d49-fd8b14ea6bb3'::uuid,'357966c5-4af9-4428-a1fa-c1d7d9f8bdd2'::uuid,'ad2242e8-66e3-490b-bba5-bb0620dad6e2'::uuid,'8b675931-7d22-41dc-975a-657f071f3612'::uuid,'7b5a95eb-4dfe-4175-8e6b-18de5a327067'::uuid,'ce1f5f78-7de9-4810-a612-fad71d93b63b'::uuid,'587cb272-8d0e-454d-bd05-e0b437f10f7b'::uuid,'a02b707a-0329-4618-8784-197906fc3faf'::uuid,'aa6be6a1-2c6e-4837-b3f2-56747a3f2319'::uuid,'288fc841-46bb-41b0-88cd-6b3eb149c9c4'::uuid,'39e18231-5541-432f-b46e-651caad8ab1c'::uuid,'09ce48eb-a49c-48a0-b107-31df469ac59e'::uuid,'1d000cf0-dab2-4be7-b03b-5904e6c22ec3'::uuid,'df09f49f-d5a8-43fd-a659-da6de9d5db84'::uuid,'57cc287f-7fb9-4eb4-9071-0fdbe86a9641'::uuid,'7d66d9de-ff86-4cd9-813b-91a0bb5eac8f'::uuid,'71c87a47-be10-4cdc-9e64-f2ebeb408478'::uuid,'9fd5eb5f-9c69-4e6a-be8a-9023dd92c3df'::uuid,'a4f403e2-99b4-4086-be6c-327b6cb04ea3'::uuid,'fb0f9f80-dc8d-4ce8-bcb0-67ec0732e8cd'::uuid,'83853bb9-6645-4542-ac0a-7d8f21cc0347'::uuid,'b466bb55-0489-469e-9773-07afaa9fe6c7'::uuid,'8380c984-9629-467f-bc9a-5d1459bf450a'::uuid,'dab6c5c7-b04e-4e1d-b6ae-5c3cd4c00ba8'::uuid,'45e497a9-db1d-427e-926c-7331f7214bc0'::uuid,'8deb09e7-f49c-470e-8746-faf6d2007de7'::uuid,'2cfa5ac7-7265-43d6-9c81-7dd8663224ed'::uuid,'5a58256f-1a01-4154-8bd3-57359fe86377'::uuid,'ca6881fb-61d6-4e75-b1fc-3c8b013cdbea'::uuid,'84b40a92-e8c2-47f8-b956-b127a902e6e7'::uuid,'73484b04-06b0-4a84-bdb8-4446dd4eadb3'::uuid,'868da33a-1c41-43a5-9fa6-1ec2df2790c6'::uuid,'165c6aba-7d9d-498d-9dd2-fed17fd7f595'::uuid,'d274871e-002b-400a-b70d-20c1d008c809'::uuid,'78c8aa95-f490-45d3-9100-ee25e157fde8'::uuid,'c999360f-1abd-4919-8d86-64ba4fdc7e55'::uuid,'f8eec607-6139-4d09-b996-1ee4e52146b8'::uuid) AND status='completed'),\n              'prediction_rows', (SELECT count(*) FROM predictions WHERE feedback_id IN ('58abc135-e6c8-4839-a444-2a6edd110df1'::uuid,'48e32d5d-ed3d-4e8d-b471-febcbf8e08ee'::uuid,'fd0da423-37c2-43bd-a8c2-7a4720e64ede'::uuid,'209e6bc9-89f4-489e-a91b-933c09f56bc5'::uuid,'52dc47f3-20cd-431b-bf5d-c59e45548fc9'::uuid,'df2f01f0-1d67-495c-9c1a-60737573dc92'::uuid,'14f84584-c7db-4f77-943d-9d70d583df54'::uuid,'ef610f1e-72fd-4ffe-ae52-db089a9b2f44'::uuid,'7fd56a14-f7ba-4227-b88e-960e6b42ba13'::uuid,'20bf0a82-bdb6-4f79-973a-f824d06e0dd1'::uuid,'c9bae39b-63ce-4fb9-a798-163a3f56c2d3'::uuid,'ab8ef30b-26f3-448e-bf6c-6c8fa0fe5841'::uuid,'622dc3f3-9729-4cc5-a6c7-e5d028d9dec4'::uuid,'1438eec9-c190-4750-8049-f778a34ced0c'::uuid,'f3e04867-94cc-425c-993e-eb7282b37b2f'::uuid,'3ad42ad9-ec30-43a8-b2f1-8de38241bfd6'::uuid,'a91a58ba-82df-4a6c-a2b9-ea9381eade77'::uuid,'b22433a5-d84a-42bc-bcc4-900f6ab630da'::uuid,'78666fb7-fe81-4700-a420-64f34df6d3ff'::uuid,'9959b811-1b24-45dd-8177-1a011dab0dc6'::uuid,'d385d93e-8ea5-45be-9f14-21971f2c098b'::uuid,'d9af60c8-d181-4468-979f-4abef8e62b8b'::uuid,'32139a37-dae5-4ffb-9c2f-57fd1a707333'::uuid,'813c6589-0f8d-4325-9d49-fd8b14ea6bb3'::uuid,'357966c5-4af9-4428-a1fa-c1d7d9f8bdd2'::uuid,'ad2242e8-66e3-490b-bba5-bb0620dad6e2'::uuid,'8b675931-7d22-41dc-975a-657f071f3612'::uuid,'7b5a95eb-4dfe-4175-8e6b-18de5a327067'::uuid,'ce1f5f78-7de9-4810-a612-fad71d93b63b'::uuid,'587cb272-8d0e-454d-bd05-e0b437f10f7b'::uuid,'a02b707a-0329-4618-8784-197906fc3faf'::uuid,'aa6be6a1-2c6e-4837-b3f2-56747a3f2319'::uuid,'288fc841-46bb-41b0-88cd-6b3eb149c9c4'::uuid,'39e18231-5541-432f-b46e-651caad8ab1c'::uuid,'09ce48eb-a49c-48a0-b107-31df469ac59e'::uuid,'1d000cf0-dab2-4be7-b03b-5904e6c22ec3'::uuid,'df09f49f-d5a8-43fd-a659-da6de9d5db84'::uuid,'57cc287f-7fb9-4eb4-9071-0fdbe86a9641'::uuid,'7d66d9de-ff86-4cd9-813b-91a0bb5eac8f'::uuid,'71c87a47-be10-4cdc-9e64-f2ebeb408478'::uuid,'9fd5eb5f-9c69-4e6a-be8a-9023dd92c3df'::uuid,'a4f403e2-99b4-4086-be6c-327b6cb04ea3'::uuid,'fb0f9f80-dc8d-4ce8-bcb0-67ec0732e8cd'::uuid,'83853bb9-6645-4542-ac0a-7d8f21cc0347'::uuid,'b466bb55-0489-469e-9773-07afaa9fe6c7'::uuid,'8380c984-9629-467f-bc9a-5d1459bf450a'::uuid,'dab6c5c7-b04e-4e1d-b6ae-5c3cd4c00ba8'::uuid,'45e497a9-db1d-427e-926c-7331f7214bc0'::uuid,'8deb09e7-f49c-470e-8746-faf6d2007de7'::uuid,'2cfa5ac7-7265-43d6-9c81-7dd8663224ed'::uuid,'5a58256f-1a01-4154-8bd3-57359fe86377'::uuid,'ca6881fb-61d6-4e75-b1fc-3c8b013cdbea'::uuid,'84b40a92-e8c2-47f8-b956-b127a902e6e7'::uuid,'73484b04-06b0-4a84-bdb8-4446dd4eadb3'::uuid,'868da33a-1c41-43a5-9fa6-1ec2df2790c6'::uuid,'165c6aba-7d9d-498d-9dd2-fed17fd7f595'::uuid,'d274871e-002b-400a-b70d-20c1d008c809'::uuid,'78c8aa95-f490-45d3-9100-ee25e157fde8'::uuid,'c999360f-1abd-4919-8d86-64ba4fdc7e55'::uuid,'f8eec607-6139-4d09-b996-1ee4e52146b8'::uuid)),\n              'duplicate_predictions', (SELECT count(*) FROM (\n                SELECT feedback_id, model_version FROM predictions WHERE feedback_id IN ('58abc135-e6c8-4839-a444-2a6edd110df1'::uuid,'48e32d5d-ed3d-4e8d-b471-febcbf8e08ee'::uuid,'fd0da423-37c2-43bd-a8c2-7a4720e64ede'::uuid,'209e6bc9-89f4-489e-a91b-933c09f56bc5'::uuid,'52dc47f3-20cd-431b-bf5d-c59e45548fc9'::uuid,'df2f01f0-1d67-495c-9c1a-60737573dc92'::uuid,'14f84584-c7db-4f77-943d-9d70d583df54'::uuid,'ef610f1e-72fd-4ffe-ae52-db089a9b2f44'::uuid,'7fd56a14-f7ba-4227-b88e-960e6b42ba13'::uuid,'20bf0a82-bdb6-4f79-973a-f824d06e0dd1'::uuid,'c9bae39b-63ce-4fb9-a798-163a3f56c2d3'::uuid,'ab8ef30b-26f3-448e-bf6c-6c8fa0fe5841'::uuid,'622dc3f3-9729-4cc5-a6c7-e5d028d9dec4'::uuid,'1438eec9-c190-4750-8049-f778a34ced0c'::uuid,'f3e04867-94cc-425c-993e-eb7282b37b2f'::uuid,'3ad42ad9-ec30-43a8-b2f1-8de38241bfd6'::uuid,'a91a58ba-82df-4a6c-a2b9-ea9381eade77'::uuid,'b22433a5-d84a-42bc-bcc4-900f6ab630da'::uuid,'78666fb7-fe81-4700-a420-64f34df6d3ff'::uuid,'9959b811-1b24-45dd-8177-1a011dab0dc6'::uuid,'d385d93e-8ea5-45be-9f14-21971f2c098b'::uuid,'d9af60c8-d181-4468-979f-4abef8e62b8b'::uuid,'32139a37-dae5-4ffb-9c2f-57fd1a707333'::uuid,'813c6589-0f8d-4325-9d49-fd8b14ea6bb3'::uuid,'357966c5-4af9-4428-a1fa-c1d7d9f8bdd2'::uuid,'ad2242e8-66e3-490b-bba5-bb0620dad6e2'::uuid,'8b675931-7d22-41dc-975a-657f071f3612'::uuid,'7b5a95eb-4dfe-4175-8e6b-18de5a327067'::uuid,'ce1f5f78-7de9-4810-a612-fad71d93b63b'::uuid,'587cb272-8d0e-454d-bd05-e0b437f10f7b'::uuid,'a02b707a-0329-4618-8784-197906fc3faf'::uuid,'aa6be6a1-2c6e-4837-b3f2-56747a3f2319'::uuid,'288fc841-46bb-41b0-88cd-6b3eb149c9c4'::uuid,'39e18231-5541-432f-b46e-651caad8ab1c'::uuid,'09ce48eb-a49c-48a0-b107-31df469ac59e'::uuid,'1d000cf0-dab2-4be7-b03b-5904e6c22ec3'::uuid,'df09f49f-d5a8-43fd-a659-da6de9d5db84'::uuid,'57cc287f-7fb9-4eb4-9071-0fdbe86a9641'::uuid,'7d66d9de-ff86-4cd9-813b-91a0bb5eac8f'::uuid,'71c87a47-be10-4cdc-9e64-f2ebeb408478'::uuid,'9fd5eb5f-9c69-4e6a-be8a-9023dd92c3df'::uuid,'a4f403e2-99b4-4086-be6c-327b6cb04ea3'::uuid,'fb0f9f80-dc8d-4ce8-bcb0-67ec0732e8cd'::uuid,'83853bb9-6645-4542-ac0a-7d8f21cc0347'::uuid,'b466bb55-0489-469e-9773-07afaa9fe6c7'::uuid,'8380c984-9629-467f-bc9a-5d1459bf450a'::uuid,'dab6c5c7-b04e-4e1d-b6ae-5c3cd4c00ba8'::uuid,'45e497a9-db1d-427e-926c-7331f7214bc0'::uuid,'8deb09e7-f49c-470e-8746-faf6d2007de7'::uuid,'2cfa5ac7-7265-43d6-9c81-7dd8663224ed'::uuid,'5a58256f-1a01-4154-8bd3-57359fe86377'::uuid,'ca6881fb-61d6-4e75-b1fc-3c8b013cdbea'::uuid,'84b40a92-e8c2-47f8-b956-b127a902e6e7'::uuid,'73484b04-06b0-4a84-bdb8-4446dd4eadb3'::uuid,'868da33a-1c41-43a5-9fa6-1ec2df2790c6'::uuid,'165c6aba-7d9d-498d-9dd2-fed17fd7f595'::uuid,'d274871e-002b-400a-b70d-20c1d008c809'::uuid,'78c8aa95-f490-45d3-9100-ee25e157fde8'::uuid,'c999360f-1abd-4919-8d86-64ba4fdc7e55'::uuid,'f8eec607-6139-4d09-b996-1ee4e52146b8'::uuid)\n                GROUP BY feedback_id, model_version HAVING count(*) > 1\n              ) duplicates)\n            )\n        "
+      ],
+      "override": false,
+      "returncode": 0,
+      "elapsed_seconds": 0.34299999999348074,
+      "stdout": "{\"feedback_rows\" : 60, \"completed_rows\" : 60, \"prediction_rows\" : 60, \"duplicate_predictions\" : 0}\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "start",
+        "worker"
+      ],
+      "override": false,
+      "returncode": 0,
+      "elapsed_seconds": 3.452999999979511,
+      "stdout": "",
+      "stderr": " Container feedback-ai-postgres-1  Waiting\n Container feedback-ai-kafka-1  Waiting\n Container feedback-ai-kafka-1  Healthy\n Container feedback-ai-kafka-init-1  Starting\n Container feedback-ai-postgres-1  Healthy\n Container feedback-ai-migrate-1  Starting\n Container feedback-ai-migrate-1  Started\n Container feedback-ai-kafka-init-1  Started\n Container feedback-ai-migrate-1  Waiting\n Container feedback-ai-kafka-init-1  Waiting\n Container feedback-ai-inference-1  Waiting\n Container feedback-ai-inference-1  Healthy\n Container feedback-ai-migrate-1  Exited\n Container feedback-ai-kafka-init-1  Exited\n"
+    },
+    {
+      "args": [
+        "stop",
+        "-t",
+        "5",
+        "kafka"
+      ],
+      "override": false,
+      "returncode": 0,
+      "elapsed_seconds": 1.3290000000270084,
+      "stdout": "",
+      "stderr": " Container feedback-ai-kafka-1  Stopping\n Container feedback-ai-kafka-1  Stopped\n"
+    },
+    {
+      "args": [
+        "start",
+        "kafka"
+      ],
+      "override": false,
+      "returncode": 0,
+      "elapsed_seconds": 0.48399999999674037,
+      "stdout": "",
+      "stderr": " Container feedback-ai-kafka-1  Starting\n Container feedback-ai-kafka-1  Started\n"
+    },
+    {
+      "args": [
+        "exec",
+        "-T",
+        "postgres",
+        "psql",
+        "-X",
+        "-A",
+        "-t",
+        "-U",
+        "postgres",
+        "-d",
+        "feedback",
+        "-c",
+        "\n            SELECT json_build_object(\n              'feedback_rows', (SELECT count(*) FROM feedback WHERE id IN ('2ac89435-67e9-4966-bd28-0989f7c17360'::uuid,'c4628dfd-72d5-4b3c-9002-4f3b9bc329de'::uuid,'e571996b-0a02-4d8f-b53b-fc8857c9f6af'::uuid,'07d61def-21e0-4980-b988-8aeeecc437e4'::uuid,'f910c78c-5228-4003-935e-daac40aee202'::uuid,'675fbaa1-fe9d-4420-9eb0-4d8077eca158'::uuid,'f8fe4579-4aaa-4908-a96e-3981e6350ba7'::uuid,'ce5c08f3-79c8-4b45-a15f-0110df1e83fd'::uuid,'a27a9d56-9954-4f62-be4c-f011171859a1'::uuid,'63cfbf94-f27d-4da6-ac46-1c0e7260a2c0'::uuid,'9a6b6eb6-afa9-48eb-bc2a-6a019acfbbf6'::uuid,'9679c3c7-0039-4087-befc-d6428d3015c5'::uuid,'690081ad-166d-4187-adb1-c8c6dc43492b'::uuid,'7b8e5901-24a3-4580-8063-3576bd79e2d0'::uuid,'b9e0c99e-bb40-4aac-8558-d7ba6d219c16'::uuid,'2febd671-294b-40c9-86b8-301cf817641a'::uuid,'0e3b54d0-ee02-41ab-9a69-1edcdd84c0e9'::uuid,'b818e928-8972-498e-80ba-78628ae5fbda'::uuid,'e6106a69-c3eb-4bee-a6a3-ae9417fab58c'::uuid,'bd5e0e23-b486-441d-9567-84516decdd0f'::uuid,'fd9195ed-ad52-44da-ba28-6d95a084f80c'::uuid,'4fce5b1e-7a12-40c4-ac77-f5820bd6ebfc'::uuid,'566a7697-3784-46c5-9a51-af2cc7aeb159'::uuid,'79e27328-3ca6-4932-be97-005a07073675'::uuid,'0afbce0e-c75a-48fe-a073-2d05679b82d4'::uuid,'c2b6b89f-013d-45f9-8116-26b73a780e26'::uuid,'ffea8509-b32e-406f-bf08-44dade116dbd'::uuid,'ccfa9676-e556-4496-9987-0b0d457728b8'::uuid,'85ca6757-965c-4cd2-8d5c-c2eda6a4ca5d'::uuid,'da55863a-707f-465f-ae0e-df547e2454df'::uuid,'47b98775-4868-4aa4-a741-2f63309d3522'::uuid,'3175cd20-eebb-404a-8bbd-3d8e0d9fc564'::uuid,'269e8ff0-96c3-4359-9bdf-7e1b28bcfa91'::uuid,'d34386a1-1105-4105-b645-129b4e97e41c'::uuid,'3003cf15-2fd6-4fd2-8b74-4c3ddd2359ee'::uuid,'7a9ab897-1b23-4062-9da9-a92de374058f'::uuid,'0d60a16d-c291-4e8f-813f-ffce3a3e9bbe'::uuid,'a42a8968-3461-4a8f-a4c4-d18fa4ed0f8b'::uuid,'d04e18f4-0332-4f34-a394-6ad82dcbdbc9'::uuid,'2f627a96-965d-4a95-9bc5-15224b44407c'::uuid,'94f533f4-3caa-4b66-b822-a51e5d9d849f'::uuid,'edfee8b8-5a27-4527-b202-59214c05321e'::uuid,'e91771c7-5825-4b45-a6e9-9b33c26183ba'::uuid,'4ce0989b-8cdf-4a09-af63-c222f49d2eb4'::uuid,'f4839859-de85-4394-988e-3aafde2cffe4'::uuid,'3d19b21e-099b-4c87-ad2d-d1cc6bdb1c47'::uuid,'8bc4ccb7-3ab6-4272-a420-fe60c0cfa050'::uuid,'a7c13889-2fcc-4975-b5ca-302e9fe0ccd6'::uuid,'32490930-6ca1-4431-b49f-a77a1d8d1eac'::uuid,'fd191e17-fd2f-4742-abb6-253046166fdb'::uuid,'6b4d3fe3-f395-40f0-affc-b8c56fc7c2a3'::uuid,'e9bb3f5f-8ab8-46ec-b4d4-ba6e0218170f'::uuid,'a0ce27fc-ba7f-4692-b0b9-e1361d2c7c95'::uuid,'ea544fcb-4bd2-4ea0-851a-bd5ecd785526'::uuid,'04f79065-5ca7-44f2-9028-4c8375cc2196'::uuid,'cc2483ec-8785-42d4-a8e9-7c789e36baa8'::uuid,'4ebea0c6-53b6-4314-8373-f37a8c707bb8'::uuid,'3740ceea-c9a3-4d57-a721-7cc05dc6e43f'::uuid,'98bbe187-c710-4bed-842f-67263101459d'::uuid,'a2d1dc55-4c06-4cc5-9b1f-bb4524bb4492'::uuid)),\n              'completed_rows', (SELECT count(*) FROM feedback WHERE id IN ('2ac89435-67e9-4966-bd28-0989f7c17360'::uuid,'c4628dfd-72d5-4b3c-9002-4f3b9bc329de'::uuid,'e571996b-0a02-4d8f-b53b-fc8857c9f6af'::uuid,'07d61def-21e0-4980-b988-8aeeecc437e4'::uuid,'f910c78c-5228-4003-935e-daac40aee202'::uuid,'675fbaa1-fe9d-4420-9eb0-4d8077eca158'::uuid,'f8fe4579-4aaa-4908-a96e-3981e6350ba7'::uuid,'ce5c08f3-79c8-4b45-a15f-0110df1e83fd'::uuid,'a27a9d56-9954-4f62-be4c-f011171859a1'::uuid,'63cfbf94-f27d-4da6-ac46-1c0e7260a2c0'::uuid,'9a6b6eb6-afa9-48eb-bc2a-6a019acfbbf6'::uuid,'9679c3c7-0039-4087-befc-d6428d3015c5'::uuid,'690081ad-166d-4187-adb1-c8c6dc43492b'::uuid,'7b8e5901-24a3-4580-8063-3576bd79e2d0'::uuid,'b9e0c99e-bb40-4aac-8558-d7ba6d219c16'::uuid,'2febd671-294b-40c9-86b8-301cf817641a'::uuid,'0e3b54d0-ee02-41ab-9a69-1edcdd84c0e9'::uuid,'b818e928-8972-498e-80ba-78628ae5fbda'::uuid,'e6106a69-c3eb-4bee-a6a3-ae9417fab58c'::uuid,'bd5e0e23-b486-441d-9567-84516decdd0f'::uuid,'fd9195ed-ad52-44da-ba28-6d95a084f80c'::uuid,'4fce5b1e-7a12-40c4-ac77-f5820bd6ebfc'::uuid,'566a7697-3784-46c5-9a51-af2cc7aeb159'::uuid,'79e27328-3ca6-4932-be97-005a07073675'::uuid,'0afbce0e-c75a-48fe-a073-2d05679b82d4'::uuid,'c2b6b89f-013d-45f9-8116-26b73a780e26'::uuid,'ffea8509-b32e-406f-bf08-44dade116dbd'::uuid,'ccfa9676-e556-4496-9987-0b0d457728b8'::uuid,'85ca6757-965c-4cd2-8d5c-c2eda6a4ca5d'::uuid,'da55863a-707f-465f-ae0e-df547e2454df'::uuid,'47b98775-4868-4aa4-a741-2f63309d3522'::uuid,'3175cd20-eebb-404a-8bbd-3d8e0d9fc564'::uuid,'269e8ff0-96c3-4359-9bdf-7e1b28bcfa91'::uuid,'d34386a1-1105-4105-b645-129b4e97e41c'::uuid,'3003cf15-2fd6-4fd2-8b74-4c3ddd2359ee'::uuid,'7a9ab897-1b23-4062-9da9-a92de374058f'::uuid,'0d60a16d-c291-4e8f-813f-ffce3a3e9bbe'::uuid,'a42a8968-3461-4a8f-a4c4-d18fa4ed0f8b'::uuid,'d04e18f4-0332-4f34-a394-6ad82dcbdbc9'::uuid,'2f627a96-965d-4a95-9bc5-15224b44407c'::uuid,'94f533f4-3caa-4b66-b822-a51e5d9d849f'::uuid,'edfee8b8-5a27-4527-b202-59214c05321e'::uuid,'e91771c7-5825-4b45-a6e9-9b33c26183ba'::uuid,'4ce0989b-8cdf-4a09-af63-c222f49d2eb4'::uuid,'f4839859-de85-4394-988e-3aafde2cffe4'::uuid,'3d19b21e-099b-4c87-ad2d-d1cc6bdb1c47'::uuid,'8bc4ccb7-3ab6-4272-a420-fe60c0cfa050'::uuid,'a7c13889-2fcc-4975-b5ca-302e9fe0ccd6'::uuid,'32490930-6ca1-4431-b49f-a77a1d8d1eac'::uuid,'fd191e17-fd2f-4742-abb6-253046166fdb'::uuid,'6b4d3fe3-f395-40f0-affc-b8c56fc7c2a3'::uuid,'e9bb3f5f-8ab8-46ec-b4d4-ba6e0218170f'::uuid,'a0ce27fc-ba7f-4692-b0b9-e1361d2c7c95'::uuid,'ea544fcb-4bd2-4ea0-851a-bd5ecd785526'::uuid,'04f79065-5ca7-44f2-9028-4c8375cc2196'::uuid,'cc2483ec-8785-42d4-a8e9-7c789e36baa8'::uuid,'4ebea0c6-53b6-4314-8373-f37a8c707bb8'::uuid,'3740ceea-c9a3-4d57-a721-7cc05dc6e43f'::uuid,'98bbe187-c710-4bed-842f-67263101459d'::uuid,'a2d1dc55-4c06-4cc5-9b1f-bb4524bb4492'::uuid) AND status='completed'),\n              'prediction_rows', (SELECT count(*) FROM predictions WHERE feedback_id IN ('2ac89435-67e9-4966-bd28-0989f7c17360'::uuid,'c4628dfd-72d5-4b3c-9002-4f3b9bc329de'::uuid,'e571996b-0a02-4d8f-b53b-fc8857c9f6af'::uuid,'07d61def-21e0-4980-b988-8aeeecc437e4'::uuid,'f910c78c-5228-4003-935e-daac40aee202'::uuid,'675fbaa1-fe9d-4420-9eb0-4d8077eca158'::uuid,'f8fe4579-4aaa-4908-a96e-3981e6350ba7'::uuid,'ce5c08f3-79c8-4b45-a15f-0110df1e83fd'::uuid,'a27a9d56-9954-4f62-be4c-f011171859a1'::uuid,'63cfbf94-f27d-4da6-ac46-1c0e7260a2c0'::uuid,'9a6b6eb6-afa9-48eb-bc2a-6a019acfbbf6'::uuid,'9679c3c7-0039-4087-befc-d6428d3015c5'::uuid,'690081ad-166d-4187-adb1-c8c6dc43492b'::uuid,'7b8e5901-24a3-4580-8063-3576bd79e2d0'::uuid,'b9e0c99e-bb40-4aac-8558-d7ba6d219c16'::uuid,'2febd671-294b-40c9-86b8-301cf817641a'::uuid,'0e3b54d0-ee02-41ab-9a69-1edcdd84c0e9'::uuid,'b818e928-8972-498e-80ba-78628ae5fbda'::uuid,'e6106a69-c3eb-4bee-a6a3-ae9417fab58c'::uuid,'bd5e0e23-b486-441d-9567-84516decdd0f'::uuid,'fd9195ed-ad52-44da-ba28-6d95a084f80c'::uuid,'4fce5b1e-7a12-40c4-ac77-f5820bd6ebfc'::uuid,'566a7697-3784-46c5-9a51-af2cc7aeb159'::uuid,'79e27328-3ca6-4932-be97-005a07073675'::uuid,'0afbce0e-c75a-48fe-a073-2d05679b82d4'::uuid,'c2b6b89f-013d-45f9-8116-26b73a780e26'::uuid,'ffea8509-b32e-406f-bf08-44dade116dbd'::uuid,'ccfa9676-e556-4496-9987-0b0d457728b8'::uuid,'85ca6757-965c-4cd2-8d5c-c2eda6a4ca5d'::uuid,'da55863a-707f-465f-ae0e-df547e2454df'::uuid,'47b98775-4868-4aa4-a741-2f63309d3522'::uuid,'3175cd20-eebb-404a-8bbd-3d8e0d9fc564'::uuid,'269e8ff0-96c3-4359-9bdf-7e1b28bcfa91'::uuid,'d34386a1-1105-4105-b645-129b4e97e41c'::uuid,'3003cf15-2fd6-4fd2-8b74-4c3ddd2359ee'::uuid,'7a9ab897-1b23-4062-9da9-a92de374058f'::uuid,'0d60a16d-c291-4e8f-813f-ffce3a3e9bbe'::uuid,'a42a8968-3461-4a8f-a4c4-d18fa4ed0f8b'::uuid,'d04e18f4-0332-4f34-a394-6ad82dcbdbc9'::uuid,'2f627a96-965d-4a95-9bc5-15224b44407c'::uuid,'94f533f4-3caa-4b66-b822-a51e5d9d849f'::uuid,'edfee8b8-5a27-4527-b202-59214c05321e'::uuid,'e91771c7-5825-4b45-a6e9-9b33c26183ba'::uuid,'4ce0989b-8cdf-4a09-af63-c222f49d2eb4'::uuid,'f4839859-de85-4394-988e-3aafde2cffe4'::uuid,'3d19b21e-099b-4c87-ad2d-d1cc6bdb1c47'::uuid,'8bc4ccb7-3ab6-4272-a420-fe60c0cfa050'::uuid,'a7c13889-2fcc-4975-b5ca-302e9fe0ccd6'::uuid,'32490930-6ca1-4431-b49f-a77a1d8d1eac'::uuid,'fd191e17-fd2f-4742-abb6-253046166fdb'::uuid,'6b4d3fe3-f395-40f0-affc-b8c56fc7c2a3'::uuid,'e9bb3f5f-8ab8-46ec-b4d4-ba6e0218170f'::uuid,'a0ce27fc-ba7f-4692-b0b9-e1361d2c7c95'::uuid,'ea544fcb-4bd2-4ea0-851a-bd5ecd785526'::uuid,'04f79065-5ca7-44f2-9028-4c8375cc2196'::uuid,'cc2483ec-8785-42d4-a8e9-7c789e36baa8'::uuid,'4ebea0c6-53b6-4314-8373-f37a8c707bb8'::uuid,'3740ceea-c9a3-4d57-a721-7cc05dc6e43f'::uuid,'98bbe187-c710-4bed-842f-67263101459d'::uuid,'a2d1dc55-4c06-4cc5-9b1f-bb4524bb4492'::uuid)),\n              'duplicate_predictions', (SELECT count(*) FROM (\n                SELECT feedback_id, model_version FROM predictions WHERE feedback_id IN ('2ac89435-67e9-4966-bd28-0989f7c17360'::uuid,'c4628dfd-72d5-4b3c-9002-4f3b9bc329de'::uuid,'e571996b-0a02-4d8f-b53b-fc8857c9f6af'::uuid,'07d61def-21e0-4980-b988-8aeeecc437e4'::uuid,'f910c78c-5228-4003-935e-daac40aee202'::uuid,'675fbaa1-fe9d-4420-9eb0-4d8077eca158'::uuid,'f8fe4579-4aaa-4908-a96e-3981e6350ba7'::uuid,'ce5c08f3-79c8-4b45-a15f-0110df1e83fd'::uuid,'a27a9d56-9954-4f62-be4c-f011171859a1'::uuid,'63cfbf94-f27d-4da6-ac46-1c0e7260a2c0'::uuid,'9a6b6eb6-afa9-48eb-bc2a-6a019acfbbf6'::uuid,'9679c3c7-0039-4087-befc-d6428d3015c5'::uuid,'690081ad-166d-4187-adb1-c8c6dc43492b'::uuid,'7b8e5901-24a3-4580-8063-3576bd79e2d0'::uuid,'b9e0c99e-bb40-4aac-8558-d7ba6d219c16'::uuid,'2febd671-294b-40c9-86b8-301cf817641a'::uuid,'0e3b54d0-ee02-41ab-9a69-1edcdd84c0e9'::uuid,'b818e928-8972-498e-80ba-78628ae5fbda'::uuid,'e6106a69-c3eb-4bee-a6a3-ae9417fab58c'::uuid,'bd5e0e23-b486-441d-9567-84516decdd0f'::uuid,'fd9195ed-ad52-44da-ba28-6d95a084f80c'::uuid,'4fce5b1e-7a12-40c4-ac77-f5820bd6ebfc'::uuid,'566a7697-3784-46c5-9a51-af2cc7aeb159'::uuid,'79e27328-3ca6-4932-be97-005a07073675'::uuid,'0afbce0e-c75a-48fe-a073-2d05679b82d4'::uuid,'c2b6b89f-013d-45f9-8116-26b73a780e26'::uuid,'ffea8509-b32e-406f-bf08-44dade116dbd'::uuid,'ccfa9676-e556-4496-9987-0b0d457728b8'::uuid,'85ca6757-965c-4cd2-8d5c-c2eda6a4ca5d'::uuid,'da55863a-707f-465f-ae0e-df547e2454df'::uuid,'47b98775-4868-4aa4-a741-2f63309d3522'::uuid,'3175cd20-eebb-404a-8bbd-3d8e0d9fc564'::uuid,'269e8ff0-96c3-4359-9bdf-7e1b28bcfa91'::uuid,'d34386a1-1105-4105-b645-129b4e97e41c'::uuid,'3003cf15-2fd6-4fd2-8b74-4c3ddd2359ee'::uuid,'7a9ab897-1b23-4062-9da9-a92de374058f'::uuid,'0d60a16d-c291-4e8f-813f-ffce3a3e9bbe'::uuid,'a42a8968-3461-4a8f-a4c4-d18fa4ed0f8b'::uuid,'d04e18f4-0332-4f34-a394-6ad82dcbdbc9'::uuid,'2f627a96-965d-4a95-9bc5-15224b44407c'::uuid,'94f533f4-3caa-4b66-b822-a51e5d9d849f'::uuid,'edfee8b8-5a27-4527-b202-59214c05321e'::uuid,'e91771c7-5825-4b45-a6e9-9b33c26183ba'::uuid,'4ce0989b-8cdf-4a09-af63-c222f49d2eb4'::uuid,'f4839859-de85-4394-988e-3aafde2cffe4'::uuid,'3d19b21e-099b-4c87-ad2d-d1cc6bdb1c47'::uuid,'8bc4ccb7-3ab6-4272-a420-fe60c0cfa050'::uuid,'a7c13889-2fcc-4975-b5ca-302e9fe0ccd6'::uuid,'32490930-6ca1-4431-b49f-a77a1d8d1eac'::uuid,'fd191e17-fd2f-4742-abb6-253046166fdb'::uuid,'6b4d3fe3-f395-40f0-affc-b8c56fc7c2a3'::uuid,'e9bb3f5f-8ab8-46ec-b4d4-ba6e0218170f'::uuid,'a0ce27fc-ba7f-4692-b0b9-e1361d2c7c95'::uuid,'ea544fcb-4bd2-4ea0-851a-bd5ecd785526'::uuid,'04f79065-5ca7-44f2-9028-4c8375cc2196'::uuid,'cc2483ec-8785-42d4-a8e9-7c789e36baa8'::uuid,'4ebea0c6-53b6-4314-8373-f37a8c707bb8'::uuid,'3740ceea-c9a3-4d57-a721-7cc05dc6e43f'::uuid,'98bbe187-c710-4bed-842f-67263101459d'::uuid,'a2d1dc55-4c06-4cc5-9b1f-bb4524bb4492'::uuid)\n                GROUP BY feedback_id, model_version HAVING count(*) > 1\n              ) duplicates)\n            )\n        "
+      ],
+      "override": false,
+      "returncode": 0,
+      "elapsed_seconds": 0.35899999999674037,
+      "stdout": "{\"feedback_rows\" : 60, \"completed_rows\" : 60, \"prediction_rows\" : 60, \"duplicate_predictions\" : 0}\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "start",
+        "kafka"
+      ],
+      "override": false,
+      "returncode": 0,
+      "elapsed_seconds": 0.21899999998277053,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "stop",
+        "-t",
+        "5",
+        "postgres"
+      ],
+      "override": false,
+      "returncode": 0,
+      "elapsed_seconds": 0.5940000000409782,
+      "stdout": "",
+      "stderr": " Container feedback-ai-postgres-1  Stopping\n Container feedback-ai-postgres-1  Stopped\n"
+    },
+    {
+      "args": [
+        "start",
+        "postgres"
+      ],
+      "override": false,
+      "returncode": 0,
+      "elapsed_seconds": 0.5309999999590218,
+      "stdout": "",
+      "stderr": " Container feedback-ai-postgres-1  Starting\n Container feedback-ai-postgres-1  Started\n"
+    },
+    {
+      "args": [
+        "exec",
+        "-T",
+        "postgres",
+        "psql",
+        "-X",
+        "-A",
+        "-t",
+        "-U",
+        "postgres",
+        "-d",
+        "feedback",
+        "-c",
+        "\n            SELECT json_build_object(\n              'feedback_rows', (SELECT count(*) FROM feedback WHERE id IN ('695a8d57-aee4-43a0-aaef-44f934886f97'::uuid,'5e72f264-dc1c-4066-a250-b0edfb3ecac8'::uuid,'d024c510-100d-4af3-b4b4-24915329e7a1'::uuid)),\n              'completed_rows', (SELECT count(*) FROM feedback WHERE id IN ('695a8d57-aee4-43a0-aaef-44f934886f97'::uuid,'5e72f264-dc1c-4066-a250-b0edfb3ecac8'::uuid,'d024c510-100d-4af3-b4b4-24915329e7a1'::uuid) AND status='completed'),\n              'prediction_rows', (SELECT count(*) FROM predictions WHERE feedback_id IN ('695a8d57-aee4-43a0-aaef-44f934886f97'::uuid,'5e72f264-dc1c-4066-a250-b0edfb3ecac8'::uuid,'d024c510-100d-4af3-b4b4-24915329e7a1'::uuid)),\n              'duplicate_predictions', (SELECT count(*) FROM (\n                SELECT feedback_id, model_version FROM predictions WHERE feedback_id IN ('695a8d57-aee4-43a0-aaef-44f934886f97'::uuid,'5e72f264-dc1c-4066-a250-b0edfb3ecac8'::uuid,'d024c510-100d-4af3-b4b4-24915329e7a1'::uuid)\n                GROUP BY feedback_id, model_version HAVING count(*) > 1\n              ) duplicates)\n            )\n        "
+      ],
+      "override": false,
+      "returncode": 0,
+      "elapsed_seconds": 0.35899999999674037,
+      "stdout": "{\"feedback_rows\" : 3, \"completed_rows\" : 3, \"prediction_rows\" : 3, \"duplicate_predictions\" : 0}\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "start",
+        "postgres"
+      ],
+      "override": false,
+      "returncode": 0,
+      "elapsed_seconds": 0.18699999997625127,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "stop",
+        "-t",
+        "5",
+        "worker"
+      ],
+      "override": false,
+      "returncode": 0,
+      "elapsed_seconds": 0.5790000000270084,
+      "stdout": "",
+      "stderr": " Container feedback-ai-worker-1  Stopping\n Container feedback-ai-worker-1  Stopped\n"
+    },
+    {
+      "args": [
+        "up",
+        "-d",
+        "--no-deps",
+        "inference"
+      ],
+      "override": true,
+      "returncode": 0,
+      "elapsed_seconds": 1.077999999979511,
+      "stdout": "",
+      "stderr": " Container feedback-ai-inference-1  Recreate\n Container feedback-ai-inference-1  Recreated\n Container feedback-ai-inference-1  Starting\n Container feedback-ai-inference-1  Started\n"
+    },
+    {
+      "args": [
+        "exec",
+        "-T",
+        "inference",
+        "python",
+        "-c",
+        "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health/ready', timeout=3)"
+      ],
+      "override": false,
+      "returncode": 1,
+      "elapsed_seconds": 0.4220000000204891,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"/usr/local/lib/python3.12/urllib/request.py\", line 1344, in do_open\n    h.request(req.get_method(), req.selector, req.data, headers,\n  File \"/usr/local/lib/python3.12/http/client.py\", line 1338, in request\n    self._send_request(method, url, body, headers, encode_chunked)\n  File \"/usr/local/lib/python3.12/http/client.py\", line 1384, in _send_request\n    self.endheaders(body, encode_chunked=encode_chunked)\n  File \"/usr/local/lib/python3.12/http/client.py\", line 1333, in endheaders\n    self._send_output(message_body, encode_chunked=encode_chunked)\n  File \"/usr/local/lib/python3.12/http/client.py\", line 1093, in _send_output\n    self.send(msg)\n  File \"/usr/local/lib/python3.12/http/client.py\", line 1037, in send\n    self.connect()\n  File \"/usr/local/lib/python3.12/http/client.py\", line 1003, in connect\n    self.sock = self._create_connection(\n                ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/socket.py\", line 865, in create_connection\n    raise exceptions[0]\n  File \"/usr/local/lib/python3.12/socket.py\", line 850, in create_connection\n    sock.connect(sa)\nConnectionRefusedError: [Errno 111] Connection refused\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n  File \"/usr/local/lib/python3.12/urllib/request.py\", line 215, in urlopen\n    return opener.open(url, data, timeout)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/urllib/request.py\", line 515, in open\n    response = self._open(req, data)\n               ^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/urllib/request.py\", line 532, in _open\n    result = self._call_chain(self.handle_open, protocol, protocol +\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/urllib/request.py\", line 492, in _call_chain\n    result = func(*args)\n             ^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/urllib/request.py\", line 1373, in http_open\n    return self.do_open(http.client.HTTPConnection, req)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/urllib/request.py\", line 1347, in do_open\n    raise URLError(err)\nurllib.error.URLError: <urlopen error [Errno 111] Connection refused>\n"
+    },
+    {
+      "args": [
+        "logs",
+        "--tail",
+        "40",
+        "inference"
+      ],
+      "override": false,
+      "returncode": 0,
+      "elapsed_seconds": 0.18699999997625127,
+      "stdout": "inference-1  | INFO:     Started server process [7]\ninference-1  | INFO:     Waiting for application startup.\ninference-1  | ERROR:    Traceback (most recent call last):\ninference-1  |   File \"/app/.venv/lib/python3.12/site-packages/starlette/routing.py\", line 661, in lifespan\ninference-1  |     async with self.lifespan_context(app) as maybe_state:\ninference-1  |                ^^^^^^^^^^^^^^^^^^^^^^^^^^\ninference-1  |   File \"/usr/local/lib/python3.12/contextlib.py\", line 210, in __aenter__\ninference-1  |     return await anext(self.gen)\ninference-1  |            ^^^^^^^^^^^^^^^^^^^^^\ninference-1  |   File \"/app/.venv/lib/python3.12/site-packages/feedback_platform/inference.py\", line 61, in lifespan\ninference-1  |     registry.require_version(get_settings().model_version)\ninference-1  |   File \"/app/.venv/lib/python3.12/site-packages/feedback_platform/ml.py\", line 106, in require_version\ninference-1  |     raise ValueError(\ninference-1  | ValueError: Unknown model version: definitely-invalid. Available: v1, v2\ninference-1  | \ninference-1  | ERROR:    Application startup failed. Exiting.\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "up",
+        "-d",
+        "--no-deps",
+        "inference"
+      ],
+      "override": false,
+      "returncode": 0,
+      "elapsed_seconds": 0.75,
+      "stdout": "",
+      "stderr": " Container feedback-ai-inference-1  Recreate\n Container feedback-ai-inference-1  Recreated\n Container feedback-ai-inference-1  Starting\n Container feedback-ai-inference-1  Started\n"
+    },
+    {
+      "args": [
+        "exec",
+        "-T",
+        "inference",
+        "python",
+        "-c",
+        "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health/ready', timeout=3)"
+      ],
+      "override": false,
+      "returncode": 1,
+      "elapsed_seconds": 0.39100000000325963,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"/usr/local/lib/python3.12/urllib/request.py\", line 1344, in do_open\n    h.request(req.get_method(), req.selector, req.data, headers,\n  File \"/usr/local/lib/python3.12/http/client.py\", line 1338, in request\n    self._send_request(method, url, body, headers, encode_chunked)\n  File \"/usr/local/lib/python3.12/http/client.py\", line 1384, in _send_request\n    self.endheaders(body, encode_chunked=encode_chunked)\n  File \"/usr/local/lib/python3.12/http/client.py\", line 1333, in endheaders\n    self._send_output(message_body, encode_chunked=encode_chunked)\n  File \"/usr/local/lib/python3.12/http/client.py\", line 1093, in _send_output\n    self.send(msg)\n  File \"/usr/local/lib/python3.12/http/client.py\", line 1037, in send\n    self.connect()\n  File \"/usr/local/lib/python3.12/http/client.py\", line 1003, in connect\n    self.sock = self._create_connection(\n                ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/socket.py\", line 865, in create_connection\n    raise exceptions[0]\n  File \"/usr/local/lib/python3.12/socket.py\", line 850, in create_connection\n    sock.connect(sa)\nConnectionRefusedError: [Errno 111] Connection refused\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n  File \"/usr/local/lib/python3.12/urllib/request.py\", line 215, in urlopen\n    return opener.open(url, data, timeout)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/urllib/request.py\", line 515, in open\n    response = self._open(req, data)\n               ^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/urllib/request.py\", line 532, in _open\n    result = self._call_chain(self.handle_open, protocol, protocol +\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/urllib/request.py\", line 492, in _call_chain\n    result = func(*args)\n             ^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/urllib/request.py\", line 1373, in http_open\n    return self.do_open(http.client.HTTPConnection, req)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/urllib/request.py\", line 1347, in do_open\n    raise URLError(err)\nurllib.error.URLError: <urlopen error [Errno 111] Connection refused>\n"
+    },
+    {
+      "args": [
+        "exec",
+        "-T",
+        "inference",
+        "python",
+        "-c",
+        "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health/ready', timeout=3)"
+      ],
+      "override": false,
+      "returncode": 1,
+      "elapsed_seconds": 0.42199999996228144,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"/usr/local/lib/python3.12/urllib/request.py\", line 1344, in do_open\n    h.request(req.get_method(), req.selector, req.data, headers,\n  File \"/usr/local/lib/python3.12/http/client.py\", line 1338, in request\n    self._send_request(method, url, body, headers, encode_chunked)\n  File \"/usr/local/lib/python3.12/http/client.py\", line 1384, in _send_request\n    self.endheaders(body, encode_chunked=encode_chunked)\n  File \"/usr/local/lib/python3.12/http/client.py\", line 1333, in endheaders\n    self._send_output(message_body, encode_chunked=encode_chunked)\n  File \"/usr/local/lib/python3.12/http/client.py\", line 1093, in _send_output\n    self.send(msg)\n  File \"/usr/local/lib/python3.12/http/client.py\", line 1037, in send\n    self.connect()\n  File \"/usr/local/lib/python3.12/http/client.py\", line 1003, in connect\n    self.sock = self._create_connection(\n                ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/socket.py\", line 865, in create_connection\n    raise exceptions[0]\n  File \"/usr/local/lib/python3.12/socket.py\", line 850, in create_connection\n    sock.connect(sa)\nConnectionRefusedError: [Errno 111] Connection refused\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n  File \"/usr/local/lib/python3.12/urllib/request.py\", line 215, in urlopen\n    return opener.open(url, data, timeout)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/urllib/request.py\", line 515, in open\n    response = self._open(req, data)\n               ^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/urllib/request.py\", line 532, in _open\n    result = self._call_chain(self.handle_open, protocol, protocol +\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/urllib/request.py\", line 492, in _call_chain\n    result = func(*args)\n             ^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/urllib/request.py\", line 1373, in http_open\n    return self.do_open(http.client.HTTPConnection, req)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/urllib/request.py\", line 1347, in do_open\n    raise URLError(err)\nurllib.error.URLError: <urlopen error [Errno 111] Connection refused>\n"
+    },
+    {
+      "args": [
+        "exec",
+        "-T",
+        "inference",
+        "python",
+        "-c",
+        "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health/ready', timeout=3)"
+      ],
+      "override": false,
+      "returncode": 1,
+      "elapsed_seconds": 0.43700000003445894,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"/usr/local/lib/python3.12/urllib/request.py\", line 1344, in do_open\n    h.request(req.get_method(), req.selector, req.data, headers,\n  File \"/usr/local/lib/python3.12/http/client.py\", line 1338, in request\n    self._send_request(method, url, body, headers, encode_chunked)\n  File \"/usr/local/lib/python3.12/http/client.py\", line 1384, in _send_request\n    self.endheaders(body, encode_chunked=encode_chunked)\n  File \"/usr/local/lib/python3.12/http/client.py\", line 1333, in endheaders\n    self._send_output(message_body, encode_chunked=encode_chunked)\n  File \"/usr/local/lib/python3.12/http/client.py\", line 1093, in _send_output\n    self.send(msg)\n  File \"/usr/local/lib/python3.12/http/client.py\", line 1037, in send\n    self.connect()\n  File \"/usr/local/lib/python3.12/http/client.py\", line 1003, in connect\n    self.sock = self._create_connection(\n                ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/socket.py\", line 865, in create_connection\n    raise exceptions[0]\n  File \"/usr/local/lib/python3.12/socket.py\", line 850, in create_connection\n    sock.connect(sa)\nConnectionRefusedError: [Errno 111] Connection refused\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n  File \"/usr/local/lib/python3.12/urllib/request.py\", line 215, in urlopen\n    return opener.open(url, data, timeout)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/urllib/request.py\", line 515, in open\n    response = self._open(req, data)\n               ^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/urllib/request.py\", line 532, in _open\n    result = self._call_chain(self.handle_open, protocol, protocol +\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/urllib/request.py\", line 492, in _call_chain\n    result = func(*args)\n             ^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/urllib/request.py\", line 1373, in http_open\n    return self.do_open(http.client.HTTPConnection, req)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/urllib/request.py\", line 1347, in do_open\n    raise URLError(err)\nurllib.error.URLError: <urlopen error [Errno 111] Connection refused>\n"
+    },
+    {
+      "args": [
+        "exec",
+        "-T",
+        "inference",
+        "python",
+        "-c",
+        "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health/ready', timeout=3)"
+      ],
+      "override": false,
+      "returncode": 0,
+      "elapsed_seconds": 0.6410000000032596,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "start",
+        "worker"
+      ],
+      "override": false,
+      "returncode": 0,
+      "elapsed_seconds": 3.702999999979511,
+      "stdout": "",
+      "stderr": " Container feedback-ai-postgres-1  Waiting\n Container feedback-ai-kafka-1  Waiting\n Container feedback-ai-postgres-1  Healthy\n Container feedback-ai-kafka-1  Healthy\n Container feedback-ai-migrate-1  Starting\n Container feedback-ai-kafka-init-1  Starting\n Container feedback-ai-migrate-1  Started\n Container feedback-ai-kafka-init-1  Started\n Container feedback-ai-kafka-init-1  Waiting\n Container feedback-ai-inference-1  Waiting\n Container feedback-ai-migrate-1  Waiting\n Container feedback-ai-inference-1  Healthy\n Container feedback-ai-migrate-1  Exited\n Container feedback-ai-kafka-init-1  Exited\n Container feedback-ai-worker-1  Starting\n Container feedback-ai-worker-1  Started\n"
+    },
+    {
+      "args": [
+        "exec",
+        "-T",
+        "postgres",
+        "psql",
+        "-X",
+        "-A",
+        "-t",
+        "-U",
+        "postgres",
+        "-d",
+        "feedback",
+        "-c",
+        "\n            SELECT json_build_object(\n              'feedback_rows', (SELECT count(*) FROM feedback WHERE id IN ('56789fdc-5a89-4ac7-9cd6-042edbb60650'::uuid,'071dffd7-b8d0-439d-b6b0-ba73a9ab0d54'::uuid,'32a9aaa8-4571-489d-af8c-290d30be9bd1'::uuid)),\n              'completed_rows', (SELECT count(*) FROM feedback WHERE id IN ('56789fdc-5a89-4ac7-9cd6-042edbb60650'::uuid,'071dffd7-b8d0-439d-b6b0-ba73a9ab0d54'::uuid,'32a9aaa8-4571-489d-af8c-290d30be9bd1'::uuid) AND status='completed'),\n              'prediction_rows', (SELECT count(*) FROM predictions WHERE feedback_id IN ('56789fdc-5a89-4ac7-9cd6-042edbb60650'::uuid,'071dffd7-b8d0-439d-b6b0-ba73a9ab0d54'::uuid,'32a9aaa8-4571-489d-af8c-290d30be9bd1'::uuid)),\n              'duplicate_predictions', (SELECT count(*) FROM (\n                SELECT feedback_id, model_version FROM predictions WHERE feedback_id IN ('56789fdc-5a89-4ac7-9cd6-042edbb60650'::uuid,'071dffd7-b8d0-439d-b6b0-ba73a9ab0d54'::uuid,'32a9aaa8-4571-489d-af8c-290d30be9bd1'::uuid)\n                GROUP BY feedback_id, model_version HAVING count(*) > 1\n              ) duplicates)\n            )\n        "
+      ],
+      "override": false,
+      "returncode": 0,
+      "elapsed_seconds": 0.35999999998603016,
+      "stdout": "{\"feedback_rows\" : 3, \"completed_rows\" : 3, \"prediction_rows\" : 3, \"duplicate_predictions\" : 0}\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "up",
+        "-d",
+        "--no-deps",
+        "inference"
+      ],
+      "override": false,
+      "returncode": 0,
+      "elapsed_seconds": 0.31200000003445894,
+      "stdout": "",
+      "stderr": " Container feedback-ai-inference-1  Running\n"
+    },
+    {
+      "args": [
+        "start",
+        "worker"
+      ],
+      "override": false,
+      "returncode": 0,
+      "elapsed_seconds": 3.6410000000032596,
+      "stdout": "",
+      "stderr": " Container feedback-ai-kafka-1  Waiting\n Container feedback-ai-postgres-1  Waiting\n Container feedback-ai-postgres-1  Healthy\n Container feedback-ai-migrate-1  Starting\n Container feedback-ai-kafka-1  Healthy\n Container feedback-ai-kafka-init-1  Starting\n Container feedback-ai-migrate-1  Started\n Container feedback-ai-kafka-init-1  Started\n Container feedback-ai-migrate-1  Waiting\n Container feedback-ai-kafka-init-1  Waiting\n Container feedback-ai-inference-1  Waiting\n Container feedback-ai-inference-1  Healthy\n Container feedback-ai-migrate-1  Exited\n Container feedback-ai-kafka-init-1  Exited\n"
+    },
+    {
+      "args": [
+        "exec",
+        "-T",
+        "postgres",
+        "psql",
+        "-X",
+        "-A",
+        "-t",
+        "-U",
+        "postgres",
+        "-d",
+        "feedback",
+        "-c",
+        "\n            SELECT json_build_object(\n              'feedback_rows', (SELECT count(*) FROM feedback WHERE id IN ('1c110962-dbb8-4c30-bbcb-14f4c6f82695'::uuid)),\n              'completed_rows', (SELECT count(*) FROM feedback WHERE id IN ('1c110962-dbb8-4c30-bbcb-14f4c6f82695'::uuid) AND status='completed'),\n              'prediction_rows', (SELECT count(*) FROM predictions WHERE feedback_id IN ('1c110962-dbb8-4c30-bbcb-14f4c6f82695'::uuid)),\n              'duplicate_predictions', (SELECT count(*) FROM (\n                SELECT feedback_id, model_version FROM predictions WHERE feedback_id IN ('1c110962-dbb8-4c30-bbcb-14f4c6f82695'::uuid)\n                GROUP BY feedback_id, model_version HAVING count(*) > 1\n              ) duplicates)\n            )\n        "
+      ],
+      "override": false,
+      "returncode": 0,
+      "elapsed_seconds": 0.35999999998603016,
+      "stdout": "{\"feedback_rows\" : 1, \"completed_rows\" : 1, \"prediction_rows\" : 2, \"duplicate_predictions\" : 0}\n",
+      "stderr": ""
+    }
+  ],
+  "finished_at_utc": "2026-11-15T00:56:31.374847+00:00"
+}

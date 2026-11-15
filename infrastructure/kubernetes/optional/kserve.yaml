@@ -1,0 +1,50 @@
+# Optional, not included by the base Kustomization or installed by CI.
+# Requires a separately installed KServe controller and InferenceService CRD
+# supporting Standard deployment mode, plus metrics-server for HPA.
+# Replace feedback-ai:local with the tested immutable GHCR sha- image for a remote cluster.
+apiVersion: serving.kserve.io/v1beta1
+kind: InferenceService
+metadata:
+  name: feedback-inference
+  namespace: feedback-ai
+  annotations:
+    serving.kserve.io/deploymentMode: Standard
+spec:
+  predictor:
+    minReplicas: 1
+    maxReplicas: 2
+    scaleMetric: cpu
+    scaleTarget: 70
+    containers:
+      - name: kserve-container
+        image: feedback-ai:local
+        imagePullPolicy: IfNotPresent
+        command: [uvicorn, feedback_platform.inference:app, --host, 0.0.0.0, --port, "8080"]
+        ports:
+          - {name: http1, containerPort: 8080, protocol: TCP}
+        env:
+          - {name: MODEL_VERSION, value: v1}
+          - {name: OMP_NUM_THREADS, value: "1"}
+          - {name: OPENBLAS_NUM_THREADS, value: "1"}
+          - name: INTERNAL_API_KEY
+            valueFrom:
+              secretKeyRef: {name: feedback-secrets, key: INTERNAL_API_KEY}
+        startupProbe:
+          httpGet: {path: /v2/health/live, port: 8080}
+          failureThreshold: 60
+          periodSeconds: 5
+        readinessProbe:
+          httpGet: {path: /v2/health/ready, port: 8080}
+          periodSeconds: 5
+        livenessProbe:
+          httpGet: {path: /v2/health/live, port: 8080}
+          periodSeconds: 10
+        securityContext:
+          runAsNonRoot: true
+          runAsUser: 10001
+          runAsGroup: 10001
+          allowPrivilegeEscalation: false
+          capabilities: {drop: [ALL]}
+        resources:
+          requests: {cpu: 100m, memory: 128Mi}
+          limits: {cpu: "1", memory: 768Mi}

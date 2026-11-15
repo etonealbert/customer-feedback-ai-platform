@@ -165,7 +165,7 @@ def test_postgresql_row_security_denies_missing_and_foreign_tenant(platform, wai
         password = os.getenv("APP_DB_PASSWORD")
         assert password, "APP_DB_PASSWORD or TEST_DATABASE_URL is required for the RLS test"
         connection = psycopg.conninfo.make_conninfo(
-            host="localhost",
+            host="127.0.0.1",
             port=int(os.getenv("POSTGRES_PORT", "55432")),
             dbname="feedback",
             user="feedback_app",
