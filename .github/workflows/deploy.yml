@@ -39,7 +39,7 @@ jobs:
             -f head_sha="$DEPLOY_SHA" -f branch=main -f event=push -f status=success \
             -f per_page=100 --jq '.workflow_runs | length')
           test "$count" -gt 0 || { echo 'No successful main-branch CI and image publication exists for this SHA'; exit 1; }
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           ref: ${{ inputs.commit_sha }}
           persist-credentials: false
